@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ocarina of Time: Adult Link Progression</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f0c;
+    --panel: #161a14;
+    --panel-2: #1d2219;
+    --line: #2c3326;
+    --text: #e9e4d4;
+    --muted: #a39d8a;
+    --gold: #e6c068;
+    --ok: #6cc46a;
+    --fix: #e5683c;
+    --add: #e6c068;
+    --part: #6fa8e8;
+    --forest: #5fb15a;
+    --fire: #e5583c;
+    --water: #3f93e6;
+    --shadow: #a37ae0;
+    --spirit: #ea9c3c;
+    --ice: #82dcee;
+    --well: #a495bf;
+    --fortress: #d9b65c;
+    --gtg: #c79a2c;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(95,177,90,.12), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(230,192,104,.10), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, sans-serif;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px 80px; }
+  header { padding: 56px 0 24px; text-align: center; }
+  .triforce { width: 54px; height: 47px; margin: 0 auto 14px; display: block; filter: drop-shadow(0 0 12px rgba(230,192,104,.5)); }
+  h1 { font-family: Cinzel, serif; font-weight: 800; font-size: clamp(28px, 4vw, 46px); letter-spacing: .04em; margin: 0; color: var(--gold); }
+  header p { color: var(--muted); margin: 10px auto 0; max-width: 760px; }
+  nav { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 22px; }
+  nav a { color: var(--text); text-decoration: none; font-size: 13px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); }
+  nav a:hover { border-color: var(--gold); color: var(--gold); }
+
+  section { margin-top: 56px; }
+  h2 { font-family: Cinzel, serif; font-weight: 600; font-size: 24px; letter-spacing: .03em; margin: 0 0 6px; color: var(--gold); }
+  .lede { color: var(--muted); margin: 0 0 22px; max-width: 860px; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; }
+
+  .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 6px; border-radius: 5px; vertical-align: middle; white-space: nowrap; }
+  .tag.ok   { color: var(--ok);   border: 1px solid var(--ok); }
+  .tag.fix  { color: var(--fix);  border: 1px solid var(--fix); }
+  .tag.add  { color: var(--add);  border: 1px solid var(--add); }
+  .tag.part { color: var(--part); border: 1px solid var(--part); }
+  .tag.no   { color: var(--muted); border: 1px solid var(--muted); }
+
+  /* ---------- summary ---------- */
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stat { padding: 16px; }
+  .stat .n { font-family: Cinzel, serif; font-weight: 800; font-size: 32px; line-height: 1; }
+  .stat .l { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .key-findings { margin-top: 12px; padding: 18px 20px; }
+  .key-findings ul { margin: 0; padding-left: 18px; }
+  .key-findings li { margin: 6px 0; font-size: 14px; }
+  .key-findings li img { width: 20px; height: 20px; vertical-align: -4px; image-rendering: pixelated; }
+
+  /* ---------- early unlocks ---------- */
+  .early { display: grid; grid-template-columns: 260px 1fr; gap: 18px; align-items: stretch; }
+  .early-key { position: relative; overflow: hidden; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 250px; }
+  .early-key img.bg { position: absolute; right: -40px; top: -10px; width: 300px; opacity: .55; }
+  .early-key .k { position: relative; font-family: Cinzel, serif; font-size: 20px; color: var(--gold); }
+  .early-key .row { position: relative; display: flex; gap: 8px; align-items: center; margin-top: 8px; font-weight: 600; }
+  .early-key .row img { width: 28px; height: 28px; image-rendering: pixelated; }
+  .early-list { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .unlock { padding: 16px 14px; display: flex; flex-direction: column; gap: 8px; }
+  .unlock .icons { display: flex; gap: 6px; min-height: 34px; align-items: center; }
+  .unlock .icons img { width: 32px; height: 32px; image-rendering: pixelated; background: rgba(255,255,255,.04); border-radius: 8px; padding: 3px; }
+  .unlock .icons img.note { width: 24px; height: 24px; padding: 5px; box-sizing: content-box; }
+  .unlock b { font-size: 14px; }
+  .unlock span { font-size: 12.5px; color: var(--muted); }
+  .unlock .check { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; margin-top: auto; }
+
+  /* ---------- map ---------- */
+  .map-outer { width: min(1440px, calc(100vw - 32px)); position: relative; left: 50%; transform: translateX(-50%); }
+  .map { padding: 14px; overflow-x: auto; }
+  .map svg { display: block; width: 100%; min-width: 1100px; height: auto; user-select: none; }
+  .edge { fill: none; stroke-width: 2.5; opacity: .6; transition: opacity .2s, stroke-width .2s; }
+  .edge.full-stub { opacity: 0; }
+  .edge.dashed { stroke-dasharray: 7 6; }
+  .edge.dotted { stroke-dasharray: 2 5; stroke-linecap: round; stroke-width: 3; }
+  .node { cursor: pointer; transition: opacity .2s; }
+  .node .title { font-size: 15px; font-weight: 700; fill: var(--text); }
+  .node .sub { font-size: 11.5px; fill: var(--muted); }
+  .node .note { font-size: 11px; fill: var(--muted); }
+  .port { transition: opacity .2s; }
+  .stub { transition: opacity .2s; }
+  .stub text { font-size: 11px; font-weight: 600; fill: var(--muted); }
+  svg.focus .edge { opacity: .07; }
+  svg.focus .edge.full-stub { opacity: 0; }
+  svg.focus .node, svg.focus .stub, svg.focus .port { opacity: .25; }
+  svg.focus .hot { opacity: 1 !important; }
+  svg.focus .edge.hot { stroke-width: 3.5; }
+  .map-bar { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; padding: 10px 8px 2px; }
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .legend svg { width: 34px; height: 22px; }
+  .hint { font-size: 12.5px; color: var(--gold); }
+  .focus-info { margin-top: 12px; padding: 14px 18px; min-height: 64px; font-size: 14px; }
+  .focus-info .empty { color: var(--muted); }
+  .focus-info b { color: var(--gold); }
+  .focus-info .chain { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+
+  /* ---------- rules ---------- */
+  .rules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .rule { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .rule .flow { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 3px; border-radius: 999px; font-size: 12.5px; font-weight: 600; background: var(--panel-2); border: 1px solid var(--c, var(--line)); }
+  .pill img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+  .arrow { color: var(--muted); font-size: 16px; }
+  .via { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--muted); }
+  .via img { width: 20px; height: 20px; image-rendering: pixelated; }
+  .via img.note { width: 13px; height: 13px; }
+  .rule p { margin: 0; font-size: 13px; color: var(--muted); }
+
+  /* ---------- dungeon cards ---------- */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { overflow: hidden; display: flex; flex-direction: column; border-top: 3px solid var(--c); }
+  .card .shot { position: relative; aspect-ratio: 16 / 8; background: #000; }
+  .card .shot img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .9; }
+  .card .shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, var(--panel) 2%, transparent 55%); }
+  .card .name { position: absolute; left: 16px; bottom: 10px; z-index: 1; font-family: Cinzel, serif; font-weight: 800; font-size: 20px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.9); }
+  .card .kind { position: absolute; right: 12px; top: 12px; z-index: 1; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,.65); color: var(--c); border: 1px solid var(--c); }
+  .card .body { padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+  .card h4 { margin: 0; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .reqs { display: flex; flex-wrap: wrap; gap: 6px; }
+  .req { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px 4px 5px; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--line); font-size: 12.5px; font-weight: 600; }
+  .req img { width: 22px; height: 22px; image-rendering: pixelated; }
+  .req img.note { width: 14px; height: 14px; margin: 0 4px; }
+  .req img.shot { image-rendering: auto; border-radius: 5px; object-fit: cover; }
+  .req.opt { border-style: dashed; color: var(--muted); }
+  .req.new { border-color: rgba(230,192,104,.6); background: rgba(230,192,104,.07); }
+  .req .tag { margin-left: 2px; }
+  .or-sep { align-self: center; font-size: 11px; font-weight: 700; color: var(--gold); }
+  .gives { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .gives img { width: 24px; height: 24px; image-rendering: pixelated; }
+  .foot { font-size: 12px; color: var(--muted); border-left: 2px solid var(--c); padding-left: 10px; margin-top: auto; }
+  .foot p { margin: 0 0 4px; }
+
+  /* ---------- cross-check ---------- */
+  .xcheck { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .xcheck th { text-align: left; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .xcheck td { padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .xcheck tr:last-child td { border-bottom: 0; }
+  .xcheck td.claim { font-weight: 600; width: 30%; }
+  .xcheck td.v { width: 92px; }
+  .xcheck td.src { width: 20%; font-size: 12px; }
+  .xcheck td.src a { color: var(--muted); display: block; }
+  .xcheck .grp td { background: var(--panel-2); font-family: Cinzel, serif; color: var(--gold); font-weight: 600; font-size: 14px; padding: 8px 14px; }
+
+  /* ---------- orders ---------- */
+  .orders { display: flex; flex-direction: column; gap: 10px; }
+  .order { display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 12px; padding: 10px 14px; }
+  .order .num { font-family: Cinzel, serif; font-weight: 800; font-size: 20px; color: var(--muted); text-align: center; }
+  .order .seq { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .step { display: flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--line); min-width: 150px; }
+  .step img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; border: 2px solid var(--c); }
+  .step b { font-size: 13.5px; }
+  .order .chev { color: var(--muted); }
+  .order.picked { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 0 28px rgba(230,192,104,.18); }
+  .order.picked .num { color: var(--gold); }
+  .badge { margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #1a1408; background: var(--gold); padding: 4px 9px; border-radius: 6px; }
+  .side-fit { margin-top: 14px; padding: 16px 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .side-fit div { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--muted); }
+  .side-fit img { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 2px solid var(--c); flex: none; }
+  .side-fit b { color: var(--text); display: block; }
+
+  .heat { margin-top: 14px; padding: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+  .heat table { border-collapse: separate; border-spacing: 5px; width: 100%; }
+  .heat th { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .heat td.lbl { font-size: 13px; font-weight: 600; white-space: nowrap; padding-right: 6px; }
+  .heat td.lbl img { width: 22px; height: 22px; border-radius: 5px; object-fit: cover; vertical-align: middle; margin-right: 8px; border: 1px solid var(--c); }
+  .heat td.cell { height: 38px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 700; border: 1px solid var(--line); }
+  .heat p { color: var(--muted); font-size: 13.5px; margin: 0 0 10px; }
+  .heat p b { color: var(--text); }
+
+  footer { margin-top: 56px; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
+  footer a { color: var(--muted); }
+  footer p { margin: 0 0 8px; }
+
+  @media (max-width: 1100px) {
+    .rules { grid-template-columns: 1fr 1fr; }
+    .summary { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 1000px) {
+    .early { grid-template-columns: 1fr; }
+    .early-list { grid-template-columns: repeat(2, 1fr); }
+    .cards { grid-template-columns: 1fr 1fr; }
+    .heat, .side-fit { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .rules, .cards, .early-list, .summary { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <svg class="triforce" viewBox="0 0 54 47"><g fill="#e6c068"><polygon points="27,0 40.5,23.5 13.5,23.5"/><polygon points="13.5,23.5 27,47 0,47"/><polygon points="40.5,23.5 54,47 27,47"/></g></svg>
+  <h1>Adult Link Progression</h1>
+  <p>What each adult dungeon in Ocarina of Time needs, what it unlocks, and every glitchless order of the five temples. Requirements cover every chest in each dungeon, Gold Skulltulas excluded, except Gerudo Training Grounds, where the goal is only the Ice Arrows. Your notes were cross-checked against Zelda Wiki and the OoT Randomizer's logic files.</p>
+  <nav>
+    <a href="#findings">What changed</a>
+    <a href="#early">Before the Forest Temple</a>
+    <a href="#map">Dependency map</a>
+    <a href="#rules">Sequence rules</a>
+    <a href="#dungeons">Dungeon requirements</a>
+    <a href="#xcheck">Cross-check</a>
+    <a href="#orders">Possible orders</a>
+  </nav>
+</header>
+
+<!-- ================= FINDINGS ================= -->
+<section id="findings">
+  <h2>What changed after the cross-check</h2>
+  <p class="lede">Everything in your notes held up: the sequence rules, the seven orders, the early unlocks and your Training Grounds route. The research only adds items your notes did not list. Everything Child Link can get before pulling the Master Sword is assumed to be in your inventory, including optional items like Din's Fire.</p>
+  <div class="summary" id="summary"></div>
+  <div class="panel key-findings">
+    <ul>
+      <li><img src="img/i-lens.png" alt=""> <b>The Lens of Truth is optional everywhere.</b> It shows invisible things in Shadow, Spirit, Training Grounds, Bottom of the Well and the Haunted Wasteland, and every one of them can be done from memory or with a guide. Doing Bottom of the Well before Shadow and Spirit makes them easier, but it is not required.</li>
+      <li><img src="img/i-icearrow.png" alt=""> <b>Training Grounds: your Ice Arrows route is right.</b> Seven keys open the path, and the seventh comes from either the Hammer or the Iron Boots. The research adds the Gerudo Card to get in, and the Lens of Truth helps with the hidden chest and the fake wall.</li>
+      <li><img src="img/i-zora.png" alt=""> <b>Water needs the Zora Tunic</b> for the Central Pillar chest. <img src="img/n-storms.png" alt="" style="width:14px;height:14px"> <b>Fire needs Scarecrow's Song</b> for its Scarecrow chest.</li>
+      <li>The seven temple orders are unchanged. No new requirement links one temple to another.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= EARLY ================= -->
+<section id="early">
+  <h2>Before the Forest Temple</h2>
+  <p class="lede">With the Hookshot and Epona, all of this is open before you set foot in a temple. All five checked out.</p>
+  <div class="early">
+    <div class="panel early-key">
+      <img class="bg" src="img/epona.png" alt="">
+      <div class="k">You need</div>
+      <div class="row"><img src="img/i-hookshot.png" alt="">Hookshot</div>
+      <div class="row"><img src="img/epona.png" alt="" style="object-fit:contain;image-rendering:auto">Epona</div>
+    </div>
+    <div class="early-list">
+      <div class="panel unlock">
+        <div class="icons"><img src="img/i-biggoron.png" alt=""></div>
+        <b>Biggoron Sword</b><span>Adult trading sequence</span>
+        <div class="check"><span class="tag ok">Confirmed</span> The chain passes the carpenters' tent beyond the broken bridge in Gerudo Valley, which Epona jumps.</div>
+      </div>
+      <div class="panel unlock">
+        <div class="icons"><img src="img/i-goron.png" alt=""><img class="note" src="img/n-bolero.png" alt=""></div>
+        <b>Red Tunic + Bolero of Fire</b><span>Goron City and Death Mountain Crater</span>
+        <div class="check"><span class="tag ok">Confirmed</span> The Hookshot (or Hover Boots) reaches Sheik in the crater.</div>
+      </div>
+      <div class="panel unlock">
+        <div class="icons"><img src="img/i-ironboots.png" alt=""><img class="note" src="img/n-serenade.png" alt=""><img src="img/i-zora.png" alt=""></div>
+        <b>Iron Boots, Serenade of Water, Blue Tunic</b><span>Ice Cavern and Zora's Domain</span>
+        <div class="check"><span class="tag ok">Confirmed</span> Blue Fire from the Ice Cavern melts the red ice and thaws King Zora. The Blue Tunic can also be bought at the Zora Shop.</div>
+      </div>
+      <div class="panel unlock">
+        <div class="icons"><img src="img/i-gerudo.png" alt=""></div>
+        <b>Gerudo Membership Card</b><span>Gerudo Fortress stealth section</span>
+        <div class="check"><span class="tag ok">Confirmed</span> Free all four carpenters. The Longshot can replace Epona for the valley.</div>
+      </div>
+      <div class="panel unlock">
+        <div class="icons"><img src="img/i-scale.png" alt=""></div>
+        <b>Golden Scale</b><span>Fishing Pond</span>
+        <div class="check"><span class="tag ok">Confirmed</span> Adult fishing has no item requirement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAP ================= -->
+<section id="map">
+  <h2>Dependency map</h2>
+  <p class="lede">Columns run left to right in the order things open up. The small icons on the left of each dungeon are what it needs, and each line comes from the dungeon that gives that item. <b style="color:var(--gold)">Hover or click a dungeon</b> to see only what it depends on and what it opens.</p>
+</section>
+</div>
+
+<div class="map-outer">
+  <div class="panel map">
+    <svg id="graph" viewBox="0 0 1400 740" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="map-bar">
+      <div class="legend">
+        <span><svg viewBox="0 0 34 22"><rect x="3" y="3" width="16" height="16" rx="5" fill="#1d2219" stroke="#5fb15a" stroke-width="2"/><line x1="19" y1="11" x2="34" y2="11" stroke="#5fb15a" stroke-width="2.5"/></svg>Needed item, coloured by the dungeon that gives it</span>
+        <span><svg viewBox="0 0 34 22"><rect x="3" y="3" width="16" height="16" rx="5" fill="#1d2219" stroke="#e6c068" stroke-width="2" stroke-dasharray="3 3"/></svg>Item from outside the dungeons</span>
+        <span><svg viewBox="0 0 34 22"><circle cx="6" cy="11" r="4" fill="#e5583c"/><line x1="10" y1="11" x2="34" y2="11" stroke="#e5583c" stroke-width="2"/></svg>Short line: source named instead of drawn</span>
+        <span><svg viewBox="0 0 34 22"><line x1="0" y1="11" x2="34" y2="11" stroke="#a39d8a" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/></svg>Either one is enough</span>
+        <span><svg viewBox="0 0 34 22"><line x1="0" y1="11" x2="34" y2="11" stroke="#a39d8a" stroke-width="2.5" stroke-dasharray="7 6"/></svg>Skippable if you know the layout</span>
+        <span><svg viewBox="0 0 34 22"><polygon points="17,1 27,11 17,21 7,11" fill="#2a2414" stroke="#e6c068" stroke-width="2"/></svg>All incoming must be done</span>
+      </div>
+      <span class="hint" id="pinHint">Click a dungeon to pin it. Click empty space to clear.</span>
+    </div>
+  </div>
+  <div class="panel focus-info" id="focusInfo"><span class="empty">Pick a dungeon on the map to list everything it depends on.</span></div>
+</div>
+
+<div class="wrap">
+
+<!-- ================= RULES ================= -->
+<section id="rules">
+  <h2>Sequence rules</h2>
+  <p class="lede">Your six rules all check out. The last two come from the research.</p>
+  <div class="rules">
+    <div class="panel rule">
+      <span><span class="tag ok">Confirmed</span></span>
+      <div class="flow"><span class="pill" style="--c:var(--fire)"><img src="img/fire.png" alt="">Fire</span><span class="via">can be first</span></div>
+      <p>The Bow only opens the 3F door to the Dungeon Map, and you can reach that room from the other side. The randomizer logic agrees: the map chest needs the Bow or the sixth key.</p>
+    </div>
+    <div class="panel rule">
+      <span><span class="tag ok">Confirmed</span></span>
+      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/forest.png" alt="">Forest</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-bow.png" alt="">Bow</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--water)"><img src="img/water.png" alt="">Water</span></div>
+      <p>Water can come before Fire, but only after Forest. The River chest behind Dark Link can only be opened with the Bow.</p>
+    </div>
+    <div class="panel rule">
+      <span><span class="tag ok">Confirmed</span></span>
+      <div class="flow"><span class="pill" style="--c:var(--water)"><img src="img/water.png" alt="">Water</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-longshot.png" alt="">Longshot</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.png" alt="">Spirit</span></div>
+      <p>The Longshot crosses the River of Sand in the Haunted Wasteland. The Hover Boots also work, but Shadow comes after Water anyway.</p>
+    </div>
+    <div class="panel rule">
+      <span><span class="tag ok">Confirmed</span></span>
+      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/forest.png" alt="">Forest</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-ocarina.png" alt="">past</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.png" alt="">Spirit</span></div>
+      <p>Spirit has a Child Link section. Sheik tells you that you can return the Master Sword to go back in time once the Forest Temple is cleared.</p>
+    </div>
+    <div class="panel rule">
+      <span><span class="tag ok">Confirmed</span></span>
+      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/m-forest.png" alt="">Forest</span><span class="pill" style="--c:var(--fire)"><img src="img/m-fire.png" alt="">Fire</span><span class="pill" style="--c:var(--water)"><img src="img/m-water.png" alt="">Water</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--shadow)"><img src="img/shadow.png" alt="">Shadow</span></div>
+      <p>The Kakariko cutscene with Sheik teaching the Nocturne of Shadow needs all three medallions.</p>
+    </div>
+    <div class="panel rule">
+      <span><span class="tag ok">Confirmed</span></span>
+      <div class="flow"><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.png" alt="">Spirit</span><span class="arrow">&harr;</span><span class="pill" style="--c:var(--shadow)"><img src="img/shadow.png" alt="">Shadow</span></div>
+      <p>Spirit can come before Shadow because it does not need the Hover Boots. The Longshot covers the Wasteland.</p>
+    </div>
+    <div class="panel rule">
+      <span><span class="tag part">Recommended</span></span>
+      <div class="flow"><span class="pill" style="--c:var(--well)"><img src="img/well.png" alt="">Well</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-lens.png" alt="">Lens</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--shadow)"><img src="img/shadow.png" alt="">Shadow</span><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.png" alt="">Spirit</span></div>
+      <p>Bottom of the Well before Shadow and Spirit gives you the Lens for their invisible walls, floors and chests. It is optional if you know where those are. The Well itself can only be done after Forest, as Child Link.</p>
+    </div>
+    <div class="panel rule">
+      <span><span class="tag add">Added</span></span>
+      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/forest.png" alt="">Forest</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-bow.png" alt="">Bow</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--gtg)"><img src="img/gtg.png" alt="">Ice Arrows</span></div>
+      <p>The Ice Arrows open right after Forest if you also have the Iron Boots from Ice Cavern, which is open from the start. Otherwise they wait for the Hammer from Fire.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DUNGEONS ================= -->
+<section id="dungeons">
+  <h2>Dungeon requirements</h2>
+  <p class="lede">Items needed for every chest except Gold Skulltulas, not counting the dungeon's own item. Training Grounds lists the minimum for the Ice Arrows. <span class="tag add">Added</span> marks what the research found that your notes did not list. Everything Child Link can get before pulling the Master Sword is assumed and not listed.</p>
+  <div class="cards" id="cards"></div>
+</section>
+
+<!-- ================= CROSS-CHECK ================= -->
+<section id="xcheck">
+  <h2>Cross-check</h2>
+  <p class="lede">Each claim from your notes, what the research says, and where it comes from. The randomizer logic is the most precise source because it lists, chest by chest, what you need without glitches. I only used conditions that do not depend on the randomizer's key shuffling.</p>
+  <div class="panel" style="overflow-x:auto">
+    <table class="xcheck" id="xtable"></table>
+  </div>
+</section>
+
+<!-- ================= ORDERS ================= -->
+<section id="orders">
+  <h2>Possible orders</h2>
+  <p class="lede">The seven glitchless orders of the five temples, unchanged by the research. The highlighted one is the route you picked.</p>
+  <div class="orders" id="orderList"></div>
+  <div class="panel side-fit">
+    <div style="--c:var(--ice)"><img src="img/ice.png" alt=""><span><b>Ice Cavern</b>Before Water, for the Iron Boots and the Zora Tunic.</span></div>
+    <div style="--c:var(--well)"><img src="img/well.png" alt=""><span><b>Bottom of the Well</b>Any time after Forest. Doing it before Shadow and Spirit gives you the Lens for them, which is optional but makes them easier.</span></div>
+    <div style="--c:var(--gtg)"><img src="img/gtg.png" alt=""><span><b>Gerudo Training Grounds</b>Ice Arrows any time after Forest, once you have the Iron Boots or the Hammer.</span></div>
+  </div>
+  <div class="panel heat">
+    <div>
+      <p><b>Where each temple can land</b> across the 7 orders. The darker the cell, the more orders put that temple in that slot.</p>
+      <p>Forest is first in 5 of 7 and never later than 2nd. Shadow is never before 4th. Fire is the only temple that can move from 1st all the way to 4th.</p>
+    </div>
+    <table id="heat"></table>
+  </div>
+</section>
+
+<footer>
+  <p><b>Sources checked:</b>
+  <a href="https://wiki.ootrandomizer.com/index.php/Vanilla_Dungeon_Requirements">OoT Randomizer wiki, Vanilla Dungeon Requirements</a> ·
+  <a href="https://github.com/OoTRandomizer/OoT-Randomizer/tree/Dev/data/World">OoT Randomizer logic files (data/World, Dev branch)</a> ·
+  <a href="https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/SettingsListTricks.py">OoT Randomizer glitchless trick list</a> ·
+  <a href="https://zeldawiki.wiki/wiki/Gerudo_Training_Ground">Zelda Wiki: Gerudo Training Ground</a>,
+  <a href="https://zeldawiki.wiki/wiki/Requiem_of_Spirit">Requiem of Spirit</a>,
+  <a href="https://zeldawiki.wiki/wiki/Nocturne_of_Shadow">Nocturne of Shadow</a>,
+  <a href="https://zeldawiki.wiki/wiki/Haunted_Wasteland">Haunted Wasteland</a>,
+  <a href="https://zeldawiki.wiki/wiki/Din%27s_Fire">Din's Fire</a>,
+  <a href="https://zeldawiki.wiki/wiki/Lens_of_Truth">Lens of Truth</a>,
+  <a href="https://zeldawiki.wiki/wiki/Zora_Tunic">Zora Tunic</a>,
+  <a href="https://zeldawiki.wiki/wiki/Master_Sword">Master Sword</a>,
+  <a href="https://zeldawiki.wiki/wiki/Gerudo%27s_Membership_Card">Gerudo's Membership Card</a>,
+  <a href="https://zeldawiki.wiki/wiki/Song_of_Storms">Song of Storms</a>.</p>
+  <p><b>From your notes, not readable here:</b>
+  <a href="https://gamefaqs.gamespot.com/boards/197771-the-legend-of-zelda-ocarina-of-time/43415516">GameFAQs 43415516</a> and
+  <a href="https://gamefaqs.gamespot.com/boards/197771-the-legend-of-zelda-ocarina-of-time/76389374">GameFAQs 76389374</a> (blocked with HTTP 403),
+  <a href="https://www.reddit.com/r/OcarinaOfTime/comments/1ch83zs/comment/l21h3md/">r/OcarinaOfTime</a> (fetch refused).</p>
+  <p>Screenshots and icons from <a href="https://zeldawiki.wiki">Zelda Wiki</a>.</p>
+</footer>
+
+</div>
+
+<script>
+const D = {
+  forest:   { name: 'Forest Temple',           short: 'Forest',     img: 'forest.png',   c: 'var(--forest)',   hex: '#5fb15a', gives: ['i-bow.png', 'Fairy Bow'] },
+  fire:     { name: 'Fire Temple',             short: 'Fire',       img: 'fire.png',     c: 'var(--fire)',     hex: '#e5583c', gives: ['i-hammer.png', 'Megaton Hammer'] },
+  water:    { name: 'Water Temple',            short: 'Water',      img: 'water.png',    c: 'var(--water)',    hex: '#3f93e6', gives: ['i-longshot.png', 'Longshot'] },
+  shadow:   { name: 'Shadow Temple',           short: 'Shadow',     img: 'shadow.png',   c: 'var(--shadow)',   hex: '#a37ae0', gives: ['i-hoverboots.png', 'Hover Boots'] },
+  spirit:   { name: 'Spirit Temple',           short: 'Spirit',     img: 'spirit.png',   c: 'var(--spirit)',   hex: '#ea9c3c', gives: ['i-mirror.png', 'Mirror Shield'] },
+  ice:      { name: 'Ice Cavern',              short: 'Ice Cavern', img: 'ice.png',      c: 'var(--ice)',      hex: '#82dcee', gives: ['i-ironboots.png', 'Iron Boots'] },
+  well:     { name: 'Bottom of the Well',      short: 'Well',       img: 'well.png',     c: 'var(--well)',     hex: '#a495bf', gives: ['i-lens.png', 'Lens of Truth'] },
+  fortress: { name: 'Gerudo Fortress',         short: 'Fortress',   img: 'fortress.png', c: 'var(--fortress)', hex: '#d9b65c', gives: ['i-gerudo.png', 'Gerudo Card'] },
+  gtg:      { name: 'Gerudo Training Grounds', short: 'Training Grounds', img: 'gtg.png', c: 'var(--gtg)',    hex: '#c79a2c', gives: ['i-icearrow.png', 'Ice Arrows'] },
+};
+const ITEM = {
+  'i-bow': 'Fairy Bow', 'i-ironboots': 'Iron Boots', 'i-zora': 'Zora Tunic', 'i-ocarina': 'Return to the past',
+  'n-storms': 'Song of Storms', 'i-lens': 'Lens of Truth', 'i-longshot': 'Longshot', 'i-gerudo': 'Gerudo Card',
+  'n-nocturne': 'Nocturne of Shadow', 'i-dins': "Din's Fire", 'i-hammer': 'Megaton Hammer', 'i-gauntlets': 'Silver Gauntlets',
+};
+
+/* ================= GRAPH ================= */
+const GRAPH = (function () {
+  const svg = document.getElementById('graph');
+  const NS = 'http://www.w3.org/2000/svg';
+  const W = 180, G = 30, PS = 28, GAP = 32;
+  const pos = {
+    start:  [90, 380],
+    forest: [340, 140], fire: [340, 300], ice: [340, 470], fortress: [340, 640],
+    well:   [670, 100], water: [670, 400],
+    gate:   [1000, 240], spirit: [1000, 470],
+    shadow: [1300, 200], gtg: [1300, 620],
+  };
+  // Inputs drawn as icon ports on the left of each node, top to bottom.
+  // from: source node (or list of sources when `or` is set), ext: item from outside the dungeons,
+  // stub: name the source instead of drawing a long line, opt: helpful but not required, or: any one source is enough.
+  const ports = {
+    well:   [{ from: 'forest', icons: ['i-ocarina'] }, { ext: true, icons: ['n-storms'], tip: 'Song of Storms, learned as adult in the Kakariko windmill' }],
+    water:  [{ from: 'forest', icons: ['i-bow'] }, { from: 'ice', icons: ['i-ironboots', 'i-zora'] }],
+    spirit: [{ from: 'well', icons: ['i-lens'], opt: true, tip: 'Lens of Truth: shows the Phantom Guide in the Wasteland and two invisible chests. Not needed if you know the path and where the chests are.' },
+             { from: 'water', icons: ['i-longshot'] }, { from: 'fortress', icons: ['i-gerudo'] }],
+    shadow: [{ from: 'well', icons: ['i-lens'], opt: true, tip: "Lens of Truth: shows invisible walls, floors, the moving platform and Bongo Bongo's body. Not needed if you know where they are." },
+             { from: 'gate', icons: ['n-nocturne'] }],
+    gtg:    [{ from: 'well', icons: ['i-lens'], stub: true, opt: true, tip: 'Lens of Truth: shows the hidden ceiling chest and the fake wall. Not needed if you know where they are.' },
+             { from: 'forest', icons: ['i-bow'], stub: true },
+             { from: ['fire', 'ice'], icons: ['i-hammer', 'OR', 'i-ironboots'], stub: true, or: true, tip: 'Megaton Hammer (Fire Temple) or Iron Boots (Ice Cavern): either one gets you the 7th key' },
+             { from: 'fortress', icons: ['i-gerudo'] }],
+  };
+  // Plain edges into a node's left side (no port).
+  const plain = [['start', 'forest'], ['start', 'fire'], ['start', 'ice'], ['start', 'fortress'], ['forest', 'gate'], ['fire', 'gate'], ['water', 'gate']];
+
+  const el = (tag, attrs, parent) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  };
+  const height = id => id === 'start' ? 120 : Math.max(84, (ports[id] || []).length * GAP + 16);
+  const colour = id => id === 'start' ? '#e6c068' : id === 'gate' ? '#e6c068' : D[id].hex;
+  const curve = (x0, y0, x1, y1) => { const xm = (x0 + x1) / 2; return `M${x0},${y0} C${xm},${y0} ${xm},${y1} ${x1},${y1}`; };
+  const outPoint = (id, ty) => {
+    if (id === 'gate') return [pos.gate[0] + G, pos.gate[1]];
+    const [cx, cy] = pos[id], h = height(id), w = id === 'start' ? 150 : W;
+    const dy = Math.max(-h / 2 + 14, Math.min(h / 2 - 14, (ty - cy) * 0.12));
+    return [cx + w / 2, cy + dy];
+  };
+
+  const gEdges = el('g', {}, svg), gStubs = el('g', {}, svg), gPorts = el('g', {}, svg), gNodes = el('g', {}, svg);
+  const edges = []; // {from, to, els: elements lit together on focus}
+  const extPorts = {}; // node id -> port groups for items from outside the dungeons
+
+  // background click clears the pin
+  const bg = el('rect', { x: 0, y: 0, width: 1400, height: 740, fill: 'transparent' }, svg);
+  svg.insertBefore(bg, gEdges);
+
+  // ---- plain edges
+  plain.forEach(([a, b]) => {
+    const tx = b === 'gate' ? pos.gate[0] - G : pos[b][0] - W / 2;
+    const ty = pos[b][1];
+    const [x0, y0] = outPoint(a, ty);
+    const p = el('path', { d: curve(x0, y0, tx, ty), class: 'edge', stroke: colour(a) }, gEdges);
+    edges.push({ from: a, to: b, els: [p] });
+  });
+
+  // ---- ports and their edges
+  Object.entries(ports).forEach(([id, list]) => {
+    const [cx, cy] = pos[id];
+    list.forEach((pt, i) => {
+      const py = cy + (i - (list.length - 1) / 2) * GAP;
+      const wOf = ic => ic === 'OR' ? 18 : 22;
+      const pw = 6 + pt.icons.reduce((s, ic) => s + wOf(ic), 0);
+      const px1 = cx - W / 2 - 6, px0 = px1 - pw;
+      const g = el('g', { class: 'port' }, gPorts);
+      const sources = pt.ext ? [] : [].concat(pt.from);
+      const stroke = pt.ext || pt.or ? '#e6c068' : colour(sources[0]);
+      const dash = pt.ext || pt.opt ? '4 3' : pt.or ? '2 3' : '';
+      el('rect', { x: px0, y: py - PS / 2, width: pw, height: PS, rx: 7, fill: '#1d2219', stroke, 'stroke-width': 2, 'stroke-dasharray': dash }, g);
+      let ix = px0 + 4;
+      pt.icons.forEach(ic => {
+        if (ic === 'OR') {
+          el('text', { x: ix + 9, y: py + 4, 'text-anchor': 'middle', style: 'font-size:10px;font-weight:700;fill:#e6c068' }, g).textContent = 'or';
+        } else {
+          const s = ic.startsWith('n-') ? 13 : 20;
+          el('image', { href: `img/${ic}.png`, x: ix + (20 - s) / 2, y: py - s / 2, width: s, height: s, style: 'image-rendering:pixelated' }, g);
+        }
+        ix += wOf(ic);
+      });
+      const srcName = s => s === 'gate' ? 'the Kakariko cutscene' : D[s].name;
+      const tip = pt.tip || pt.icons.filter(ic => ic !== 'OR').map(ic => ITEM[ic]).join(' + ') + (sources.length ? ` (from ${sources.map(srcName).join(' or ')})` : '');
+      el('title', {}, g).textContent = tip;
+      pt.g = g; pt.y = py; pt.x0 = px0;
+      if (pt.ext) { (extPorts[id] = extPorts[id] || []).push(g); return; }
+      sources.forEach((src, k) => {
+        const sy = py + (sources.length > 1 ? (k - (sources.length - 1) / 2) * 16 : 0);
+        const col = colour(src);
+        const [x0, y0] = outPoint(src, sy);
+        const cls = 'edge' + (pt.stub ? ' full-stub' : '') + (pt.opt ? ' dashed' : '') + (pt.or ? ' dotted' : '');
+        const path = el('path', { d: curve(x0, y0, px0, sy), class: cls, stroke: col }, gEdges);
+        const rec = { from: src, to: id, soft: !!(pt.opt || pt.or), els: [path, g] };
+        if (pt.stub) {
+          const s = el('g', { class: 'stub' }, gStubs);
+          el('line', { x1: px0 - 30, y1: sy, x2: px0, y2: sy, stroke: col, 'stroke-width': 2, 'stroke-dasharray': pt.opt ? '4 3' : pt.or ? '2 3' : '' }, s);
+          el('circle', { cx: px0 - 30, cy: sy, r: 4.5, fill: col }, s);
+          const t = el('text', { x: px0 - 40, y: sy + 4, 'text-anchor': 'end' }, s);
+          t.textContent = (k === 0 ? 'from ' : 'or ') + D[src].short + (pt.opt ? ', or memorize' : '');
+          rec.els.push(s);
+        }
+        edges.push(rec);
+      });
+    });
+  });
+
+  // ---- nodes
+  const nodeEls = {};
+  let clipN = 0;
+  Object.keys(pos).forEach(id => {
+    const [cx, cy] = pos[id];
+    const g = el('g', { class: 'node', 'data-id': id }, gNodes);
+    nodeEls[id] = g;
+    if (id === 'gate') {
+      el('polygon', { points: `${cx},${cy - G} ${cx + G},${cy} ${cx},${cy + G} ${cx - G},${cy}`, fill: '#2a2414', stroke: '#e6c068', 'stroke-width': 2 }, g);
+      el('text', { x: cx, y: cy + 5, 'text-anchor': 'middle', class: 'title', style: 'font-size:12px;fill:#e6c068' }, g).textContent = 'AND';
+      ['m-forest', 'm-fire', 'm-water'].forEach((m, k) => el('image', { href: `img/${m}.png`, x: cx - 35 + k * 24, y: cy + G + 8, width: 22, height: 22 }, g));
+      el('text', { x: cx, y: cy + G + 48, 'text-anchor': 'middle', class: 'note' }, g).textContent = 'All three medallions';
+      el('text', { x: cx, y: cy + G + 62, 'text-anchor': 'middle', class: 'note' }, g).textContent = 'Kakariko cutscene';
+      return;
+    }
+    if (id === 'start') {
+      el('rect', { x: cx - 75, y: cy - 60, width: 150, height: 120, rx: 14, fill: '#2a2414', stroke: '#e6c068', 'stroke-width': 2 }, g);
+      el('text', { x: cx, y: cy - 32, 'text-anchor': 'middle', class: 'title', style: 'fill:#e6c068' }, g).textContent = 'Adult Link';
+      el('image', { href: 'img/i-hookshot.png', x: cx - 50, y: cy - 18, width: 24, height: 24, style: 'image-rendering:pixelated' }, g);
+      el('text', { x: cx - 20, y: cy - 1, class: 'sub' }, g).textContent = 'Hookshot';
+      el('image', { href: 'img/epona.png', x: cx - 50, y: cy + 10, width: 24, height: 24 }, g);
+      el('text', { x: cx - 20, y: cy + 27, class: 'sub' }, g).textContent = 'Epona';
+      el('text', { x: cx, y: cy + 50, 'text-anchor': 'middle', class: 'note' }, g).textContent = '+ Goron Tunic';
+      return;
+    }
+    const d = D[id], h = height(id), x = cx - W / 2, y = cy - h / 2;
+    el('rect', { x, y, width: W, height: h, rx: 12, fill: '#1d2219', stroke: d.hex, 'stroke-width': 2 }, g);
+    const cid = 'clip' + (clipN++);
+    const cp = el('clipPath', { id: cid }, g);
+    el('rect', { x: x + 8, y: cy - 30, width: 60, height: 60, rx: 9 }, cp);
+    el('image', { href: 'img/' + d.img, x: x + 8, y: cy - 30, width: 60, height: 60, preserveAspectRatio: 'xMidYMid slice', 'clip-path': `url(#${cid})` }, g);
+    const title = el('text', { x: x + 78, y: cy - 6, class: 'title' }, g);
+    title.textContent = d.short;
+    if (id === 'gtg') { title.textContent = 'Training'; el('text', { x: x + 78, y: cy + 11, class: 'title' }, g).textContent = 'Grounds'; }
+    const gy = id === 'gtg' ? cy + 20 : cy + 4;
+    el('image', { href: 'img/' + d.gives[0], x: x + 78, y: gy, width: 20, height: 20, style: 'image-rendering:pixelated' }, g);
+    el('text', { x: x + 102, y: gy + 15, class: 'sub' }, g).textContent = d.gives[1];
+  });
+
+  // ---- focus
+  const upstream = id => {
+    const seen = new Set([id]), stack = [id];
+    while (stack.length) {
+      const n = stack.pop();
+      edges.forEach(e => { if (e.to === n && !e.soft && !seen.has(e.from)) { seen.add(e.from); stack.push(e.from); } });
+    }
+    return seen;
+  };
+  let pinned = null;
+  const clear = () => {
+    svg.classList.remove('focus');
+    svg.querySelectorAll('.hot').forEach(e => e.classList.remove('hot'));
+  };
+  const focus = id => {
+    clear();
+    svg.classList.add('focus');
+    const up = upstream(id);
+    up.forEach(n => {
+      nodeEls[n].classList.add('hot');
+      (extPorts[n] || []).forEach(p => p.classList.add('hot'));
+    });
+    edges.forEach(e => {
+      const inTree = up.has(e.from) && up.has(e.to) && !e.soft;
+      if (inTree || e.from === id || e.to === id) {
+        e.els.forEach(x => x.classList.add('hot'));
+        nodeEls[e.to].classList.add('hot');
+        nodeEls[e.from].classList.add('hot');
+      }
+    });
+  };
+  const restore = () => { pinned ? focus(pinned) : clear(); };
+  Object.entries(nodeEls).forEach(([id, g]) => {
+    g.addEventListener('mouseenter', () => focus(id));
+    g.addEventListener('mouseleave', restore);
+    g.addEventListener('click', ev => { ev.stopPropagation(); pinned = id; focus(id); INFO(id); });
+  });
+  bg.addEventListener('click', () => { pinned = null; clear(); INFO(null); });
+  return { edges, ports, upstream };
+})();
+
+/* ================= FOCUS INFO ================= */
+function INFO(id) {
+  const box = document.getElementById('focusInfo');
+  if (!id) { box.innerHTML = '<span class="empty">Pick a dungeon on the map to list everything it depends on.</span>'; return; }
+  const label = n => n === 'start' ? 'Hookshot + Epona' : n === 'gate' ? 'Forest + Fire + Water medallions' : D[n].name;
+  const name = label(id);
+  const up = [...GRAPH.upstream(id)].filter(n => n !== id && n !== 'start' && n !== 'gate');
+  const direct = (GRAPH.ports[id] || []).map(p => {
+    const items = p.icons.filter(ic => ic !== 'OR').map(ic => ITEM[ic]).join(p.or ? ' or ' : ' + ');
+    const src = p.ext ? 'outside the dungeons' : [].concat(p.from).map(label).join(' or ');
+    return `${items} <span style="color:var(--muted)">(${src}${p.opt ? ', or know where the hidden spots are' : ''})</span>`;
+  });
+  const opens = GRAPH.edges.filter(e => e.from === id).map(e => label(e.to));
+  const pill = n => `<span class="pill" style="--c:${D[n].c}"><img src="img/${D[n].img}" alt="">${D[n].short}</span>`;
+  box.innerHTML = `<b>${name}</b>` +
+    (direct.length ? `<div style="margin-top:6px">Needs: ${direct.join(' · ')}</div>` : '') +
+    (up.length ? `<div class="chain"><span style="color:var(--muted);font-size:13px;align-self:center">Done before it:</span>${up.map(pill).join('')}</div>` : '<div style="margin-top:6px;color:var(--muted)">Nothing to finish first.</div>') +
+    (opens.length ? `<div style="margin-top:8px;color:var(--muted)">Opens: ${[...new Set(opens)].join(', ')}</div>` : '');
+}
+
+/* ================= CARDS ================= */
+(function () {
+  const R = (icon, label, cls = '', tag = '') => ({ icon, label, cls, tag });
+  const OR = { or: true };
+  const cards = [
+    { id: 'forest', kind: 'Temple', reqs: [R('i-hookshot.png', 'Hookshot')],
+      foot: ['The Hookshot is for getting in. Song of Time opens the northwest courtyard.'] },
+    { id: 'fire', kind: 'Temple', reqs: [R('i-hookshot.png', 'Hookshot'), R('i-goron.png', 'Goron Tunic'), R('n-storms.png', "Scarecrow's Song", 'new', 'add'), R('i-bow.png', 'Fairy Bow', 'opt', 'opt')],
+      foot: ['The Bow only hits an eye that opens a door to the Dungeon Map on 3F. You can reach that room from the other side over the bars.', "The Scarecrow chest above the boulder maze needs Scarecrow's Song. Play any 8-note tune to Bonooru at Lake Hylia as a child, then play the same tune to him again as adult."] },
+    { id: 'ice', kind: 'Mini-dungeon', reqs: [R(null, 'Nothing extra')],
+      foot: ['Blue Fire from the map room melts the red ice in front of the Iron Boots, so bring an empty Bottle. Carry more out to thaw King Zora for the Zora Tunic.'] },
+    { id: 'water', kind: 'Temple', reqs: [R('i-hookshot.png', 'Hookshot'), R('i-bow.png', 'Fairy Bow'), R('i-ironboots.png', 'Iron Boots'), R('i-zora.png', 'Zora Tunic', 'new', 'add')],
+      foot: ['The Central Pillar chest needs the Zora Tunic. The River chest past Dark Link needs the Bow.'] },
+    { id: 'well', kind: 'Mini-dungeon', reqs: [R('n-storms.png', 'Song of Storms'), R('forest.png', 'Forest done (return to the past)', 'shot')],
+      foot: ['Learn Song of Storms as adult in the windmill, then play it there as Child Link to drain the well. The whole dungeon is done as a child.'] },
+    { id: 'shadow', kind: 'Temple', reqs: [R('n-nocturne.png', 'Nocturne of Shadow'), R('i-lens.png', 'Lens of Truth', 'opt', 'opt'), R('i-hookshot.png', 'Hookshot'), R('i-bow.png', 'Fairy Bow', 'new', 'add')],
+      foot: ['Nocturne comes from the Kakariko cutscene after Forest, Fire and Water.', "The Bow drops the pillar that bridges the way to the boss (the Longshot with Scarecrow's Song also works).", "The Lens shows the fake walls, the invisible floors, the invisible moving platform in the huge pit room and Bongo Bongo's body. Without it you go from memory, and in the boss fight the hands show where the eye is."] },
+    { id: 'fortress', kind: 'Area', reqs: [R('epona.png', 'Epona', 'contain'), OR, R('i-longshot.png', 'Longshot', 'new', 'add'), R('i-hookshot.png', 'Hookshot', 'opt', 'opt')],
+      foot: ['Either one crosses the broken bridge in Gerudo Valley.', 'The Hookshot stuns guards. It helps most with the guard who walks a corridor that is hard to avoid otherwise.'] },
+    { id: 'gtg', kind: 'Mini-dungeon',
+      reqs: [R('i-gerudo.png', 'Gerudo Card', 'new', 'add'), R('i-hookshot.png', 'Hookshot'), R('i-bow.png', 'Fairy Bow'), R('i-hammer.png', 'Hammer'), OR, R('i-ironboots.png', 'Iron Boots'),
+             R('i-lens.png', 'Lens of Truth', 'opt', 'opt')],
+      foot: ['There are 9 keys, and 7 locked doors stand between you and the Ice Arrows. Six keys need no extra item: the Stalfos and Beamos chests in the lobby, the freestanding key on the right side of the maze (through the lava room with Song of Time), the hidden ceiling chest inside the maze, and the two eye-statue chests, which need the Bow.',
+             'The seventh key is the Hammer switch chest or the underwater chest. The underwater chest needs the Iron Boots and Song of Time. The randomizer\'s default logic also asks for the Zora Tunic there.',
+             'The hidden ceiling chest is invisible and the way to the eye statue runs through a fake wall. The Lens shows both. Without it you have to know where they are.',
+             'Not needed for the Ice Arrows: the Silver Gauntlets, the Hover Boots and the Longshot.'] },
+    { id: 'spirit', kind: 'Temple', reqs: [R('i-longshot.png', 'Longshot'), R('i-gerudo.png', 'Gerudo Card'), R('n-requiem.png', 'Requiem of Spirit'), R('i-bow.png', 'Fairy Bow', 'new', 'add'), R('i-lens.png', 'Lens of Truth', 'opt', 'opt'), R('i-hammer.png', 'Hammer', 'opt', 'opt')],
+      foot: ['Sheik teaches the Requiem the first time adult Link reaches the Colossus, so you cross the Wasteland once. The Longshot (or Hover Boots) crosses the River of Sand. After the flags, the Lens shows the Phantom Guide, or you follow a memorized path.', 'Inside, two chests are invisible without the Lens, and the Bow is needed for the Boss Key chest. The Hammer switch on 3F only opens a shortcut.'] },
+  ];
+  const chip = r => {
+    if (r.or) return '<span class="or-sep">OR</span>';
+    let img = '';
+    if (r.icon) {
+      const isNote = r.icon.startsWith('n-'), isItem = r.icon.startsWith('i-');
+      const cls = isNote ? 'note' : isItem ? '' : 'shot';
+      const fit = r.cls.includes('contain') ? ' style="object-fit:contain"' : '';
+      img = `<img src="img/${r.icon}" alt="" class="${cls}"${fit}>`;
+    }
+    const tag = r.tag === 'add' ? '<span class="tag add">Added</span>' : r.tag === 'opt' ? '<span class="tag no">Optional</span>' : '';
+    return `<span class="req ${r.cls}">${img}${r.label}${tag}</span>`;
+  };
+  document.getElementById('cards').innerHTML = cards.map(c => {
+    const d = D[c.id];
+    return `
+      <article class="panel card" style="--c:${d.c}">
+        <div class="shot"><img src="img/${d.img}" alt="${d.name}" loading="lazy"><span class="kind">${c.kind}</span><span class="name">${d.name}</span></div>
+        <div class="body">
+          <h4>${c.id === 'gtg' ? 'Needs, for the Ice Arrows' : 'Needs'}</h4>
+          <div class="reqs">${c.reqs.map(chip).join('')}</div>
+          <h4>Gives</h4>
+          <div class="gives"><img src="img/${d.gives[0]}" alt="">${d.gives[1]}</div>
+          ${c.foot ? `<div class="foot">${c.foot.map(f => `<p>${f}</p>`).join('')}</div>` : ''}
+        </div>
+      </article>`;
+  }).join('');
+})();
+
+/* ================= CROSS-CHECK ================= */
+(function () {
+  const S = {
+    rw: ['Randomizer wiki', 'https://wiki.ootrandomizer.com/index.php/Vanilla_Dungeon_Requirements'],
+    ow: ['Logic: Overworld.json', 'https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/data/World/Overworld.json'],
+    fire: ['Logic: Fire Temple.json', 'https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/data/World/Fire%20Temple.json'],
+    water: ['Logic: Water Temple.json', 'https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/data/World/Water%20Temple.json'],
+    shadow: ['Logic: Shadow Temple.json', 'https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/data/World/Shadow%20Temple.json'],
+    spirit: ['Logic: Spirit Temple.json', 'https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/data/World/Spirit%20Temple.json'],
+    gtg: ['Logic: Gerudo Training Ground.json', 'https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/data/World/Gerudo%20Training%20Ground.json'],
+    ice: ['Logic: Ice Cavern.json', 'https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/data/World/Ice%20Cavern.json'],
+    well: ['Logic: Bottom of the Well.json', 'https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/data/World/Bottom%20of%20the%20Well.json'],
+    forest: ['Logic: Forest Temple.json', 'https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/data/World/Forest%20Temple.json'],
+    tricks: ['Randomizer trick list', 'https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/SettingsListTricks.py'],
+    zwGtg: ['Zelda Wiki: Training Ground', 'https://zeldawiki.wiki/wiki/Gerudo_Training_Ground'],
+    zwReq: ['Zelda Wiki: Requiem of Spirit', 'https://zeldawiki.wiki/wiki/Requiem_of_Spirit'],
+    zwNoc: ['Zelda Wiki: Nocturne of Shadow', 'https://zeldawiki.wiki/wiki/Nocturne_of_Shadow'],
+    zwWaste: ['Zelda Wiki: Haunted Wasteland', 'https://zeldawiki.wiki/wiki/Haunted_Wasteland'],
+    zwDin: ["Zelda Wiki: Din's Fire", 'https://zeldawiki.wiki/wiki/Din%27s_Fire'],
+    zwZora: ['Zelda Wiki: Zora Tunic', 'https://zeldawiki.wiki/wiki/Zora_Tunic'],
+    zwSword: ['Zelda Wiki: Master Sword', 'https://zeldawiki.wiki/wiki/Master_Sword'],
+    zwCard: ["Zelda Wiki: Membership Card", 'https://zeldawiki.wiki/wiki/Gerudo%27s_Membership_Card'],
+    zwStorms: ['Zelda Wiki: Song of Storms', 'https://zeldawiki.wiki/wiki/Song_of_Storms'],
+  };
+  const V = { ok: ['ok', 'Confirmed'], add: ['add', 'Added'], fix: ['fix', 'Corrected'], part: ['part', 'Partly'], no: ['no', 'Not checked'] };
+  const rows = [
+    ['Before the Forest Temple'],
+    ['Biggoron Sword with Hookshot + Epona', 'ok', 'The trade chain needs the carpenters\' tent past the broken Gerudo Valley bridge, which needs Epona or the Longshot.', ['ow']],
+    ['Red Tunic + Bolero of Fire', 'ok', 'Sheik in the crater is reached with the Hookshot or the Hover Boots.', ['ow']],
+    ['Iron Boots, Serenade, Blue Tunic', 'ok', 'The Iron Boots sit behind red ice that Blue Fire melts. King Zora gives the Zora Tunic after you thaw him with Blue Fire.', ['ice', 'zwZora']],
+    ['Gerudo Membership Card', 'ok', 'Free all four carpenters. The valley can be crossed with Epona or the Longshot.', ['ow']],
+    ['Golden Scale from the Fishing Pond', 'ok', 'Adult fishing has no item requirement.', ['ow']],
+    ['Dungeon requirements'],
+    ['Forest Temple: Hookshot', 'ok', 'The Hookshot gets you in. Everything else it needs comes from the child half.', ['rw', 'forest']],
+    ['Fire Temple: Hookshot, Goron Tunic, Bow optional', 'ok', 'The map chest needs the Bow or the sixth key, so the Bow is optional.', ['fire', 'rw']],
+    ['Fire Temple, missing item', 'add', "The Scarecrow chest needs Scarecrow's Song, which only works after you play your tune to Bonooru again as adult.", ['fire']],
+    ['Ice Cavern: nothing', 'ok', 'Nothing beyond what Child Link already has. The red ice needs Blue Fire, carried in a Bottle.', ['ice']],
+    ['Water Temple: Hookshot, Bow, Iron Boots', 'ok', 'All three are required. The River chest needs the Bow specifically.', ['water']],
+    ['Water Temple, missing item', 'add', 'The Central Pillar chest needs the Zora Tunic. Zelda Wiki calls the tunic "essential" for this temple.', ['water', 'zwZora']],
+    ['Bottom of the Well: Song of Storms, Forest done', 'ok', 'Entered as Child Link after draining the well. The Master Sword can be returned after the Forest Temple.', ['ow', 'zwSword', 'zwStorms']],
+    ['Shadow Temple: after Forest, Fire and Water', 'ok', 'Sheik in Kakariko needs the Forest, Fire and Water Medallions.', ['ow', 'zwNoc']],
+    ['Shadow Temple, missing item', 'add', 'The Bow is needed to reach the boss. The Lens of Truth helps throughout but is optional.', ['shadow', 'rw']],
+    ['Gerudo Fortress: Epona, Hookshot optional', 'ok', 'Epona or the Longshot crosses the valley. The note about stunning guards is a play tip, not a requirement.', ['ow']],
+    ['Training Grounds: Hookshot, Bow, Hammer or Iron Boots, 7 of 9 keys', 'ok', 'Zelda Wiki says 7 of the 9 locked doors are enough. The key locations in the logic give 6 keys that need no extra item. The 7th comes from the Hammer switch chest or the underwater chest (Iron Boots), so either one is enough.', ['gtg', 'zwGtg']],
+    ['Training Grounds, missing item', 'add', 'The Gerudo Card gets you in. The Lens of Truth (optional) shows the hidden ceiling chest and the fake wall to the eye statue.', ['gtg', 'zwCard']],
+    ['Spirit Temple: Hammer optional', 'ok', 'No chest in the logic needs the Hammer.', ['spirit']],
+    ['Spirit Temple: Longshot, Gerudo Card, Requiem', 'ok', 'Sheik teaches the Requiem on your first adult visit to the Colossus. Getting there needs the Gerudo Card for the desert gate and the Longshot (or Hover Boots) for the River of Sand.', ['ow', 'zwReq', 'zwWaste']],
+    ['Spirit Temple, missing items', 'add', 'The Bow opens the Boss Key chest. The Lens of Truth (optional) shows the Phantom Guide in the Wasteland and two invisible chests.', ['spirit', 'ow', 'zwWaste']],
+    ['Sequence rules'],
+    ['Fire before Forest', 'ok', 'Fire needs no item from another temple.', ['fire']],
+    ['Water after Forest', 'ok', 'Water needs the Bow.', ['water']],
+    ['Spirit before Shadow', 'ok', 'Spirit does not need the Hover Boots because the Longshot covers the Wasteland.', ['ow']],
+    ['Forest before Spirit', 'ok', 'The child section needs time travel, which opens after Forest.', ['zwSword']],
+    ['Lens of Truth is never strictly needed (your question)', 'ok', 'Every place the logic uses the Lens has a named glitchless trick that removes it: Bottom of the Well, Shadow (stationary objects, the invisible moving platform, and Bongo Bongo, where "the hands give a pretty good idea of where the eye is"), Spirit, Training Grounds and the Wasteland ("by memorizing the path"). The only exception is the Treasure Chest Game in the Market, a child minigame where the Lens removes the luck.', ['tricks', 'shadow', 'ow']],
+    ['The seven possible orders', 'ok', 'No new requirement links two temples, so the list is complete. Bottom of the Well has to fit before Shadow and Spirit.', []],
+    ['Your sources'],
+    ['GameFAQs threads and the Reddit comment', 'no', 'GameFAQs returned HTTP 403 and Reddit refused the request, so I could not read them.', []],
+  ];
+  const counts = { ok: 0, add: 0, fix: 0, part: 0 };
+  document.getElementById('xtable').innerHTML =
+    '<tr><th>Claim in your notes</th><th>Result</th><th>What the sources say</th><th>Source</th></tr>' +
+    rows.map(r => {
+      if (r.length === 1) return `<tr class="grp"><td colspan="4">${r[0]}</td></tr>`;
+      const [claim, v, text, src] = r;
+      if (v in counts) counts[v]++;
+      return `<tr><td class="claim">${claim}</td><td class="v"><span class="tag ${V[v][0]}">${V[v][1]}</span></td><td>${text}</td><td class="src">${src.map(k => `<a href="${S[k][1]}">${S[k][0]}</a>`).join('')}</td></tr>`;
+    }).join('');
+  document.getElementById('summary').innerHTML = [
+    [counts.ok, 'claims confirmed', 'var(--ok)'],
+    [counts.add, 'gaps filled with missing items', 'var(--add)'],
+    [counts.fix, 'corrections', 'var(--fix)'],
+    [counts.part, 'partly confirmed', 'var(--part)'],
+  ].filter(([n]) => n > 0).map(([n, l, c]) => `<div class="panel stat"><div class="n" style="color:${c}">${n}</div><div class="l">${l}</div></div>`).join('');
+})();
+
+/* ================= ORDERS ================= */
+(function () {
+  const orders = [
+    ['forest', 'fire', 'water', 'shadow', 'spirit'],
+    ['forest', 'fire', 'water', 'spirit', 'shadow'],
+    ['forest', 'water', 'spirit', 'fire', 'shadow'],
+    ['forest', 'water', 'fire', 'shadow', 'spirit'],
+    ['forest', 'water', 'fire', 'spirit', 'shadow'],
+    ['fire', 'forest', 'water', 'spirit', 'shadow'],
+    ['fire', 'forest', 'water', 'shadow', 'spirit'],
+  ];
+  const picked = 2;
+  document.getElementById('orderList').innerHTML = orders.map((o, i) => `
+    <div class="panel order${i === picked ? ' picked' : ''}">
+      <div class="num">${i + 1}</div>
+      <div class="seq">
+        ${o.map(id => `<div class="step" style="--c:${D[id].c}"><img src="img/${D[id].img}" alt=""><b>${D[id].short}</b></div>`).join('<span class="chev">&#8250;</span>')}
+        ${i === picked ? '<span class="badge">Your route</span>' : ''}
+      </div>
+    </div>`).join('');
+
+  const temples = ['forest', 'fire', 'water', 'shadow', 'spirit'];
+  const count = Object.fromEntries(temples.map(t => [t, [0, 0, 0, 0, 0]]));
+  orders.forEach(o => o.forEach((t, slot) => count[t][slot]++));
+  const hexA = (hex, a) => {
+    const n = parseInt(hex.slice(1), 16);
+    return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`;
+  };
+  document.getElementById('heat').innerHTML =
+    '<tr><th></th>' + [1, 2, 3, 4, 5].map(n => `<th>${n}${['st', 'nd', 'rd', 'th', 'th'][n - 1]}</th>`).join('') + '</tr>' +
+    temples.map(t => '<tr>' +
+      `<td class="lbl" style="--c:${D[t].c}"><img src="img/${D[t].img}" alt="">${D[t].short}</td>` +
+      count[t].map(n => `<td class="cell" style="background:${n ? hexA(D[t].hex, .15 + .85 * n / orders.length) : 'transparent'};color:${n / orders.length > .5 ? '#0d0f0c' : 'var(--text)'}">${n || ''}</td>`).join('') +
+      '</tr>').join('');
+})();
+</script>
+</body>
+</html>
