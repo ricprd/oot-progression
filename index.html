@@ -59,7 +59,7 @@
   .key-findings { margin-top: 12px; padding: 18px 20px; }
   .key-findings ul { margin: 0; padding-left: 18px; }
   .key-findings li { margin: 6px 0; font-size: 14px; }
-  .key-findings li img { width: 20px; height: 20px; vertical-align: -4px; image-rendering: pixelated; }
+  .key-findings li img { width: 20px; height: 20px; vertical-align: -4px; }
 
   /* ---------- early unlocks ---------- */
   .early { display: grid; grid-template-columns: 260px 1fr; gap: 18px; align-items: stretch; }
@@ -67,12 +67,11 @@
   .early-key img.bg { position: absolute; right: -40px; top: -10px; width: 300px; opacity: .55; }
   .early-key .k { position: relative; font-family: Cinzel, serif; font-size: 20px; color: var(--gold); }
   .early-key .row { position: relative; display: flex; gap: 8px; align-items: center; margin-top: 8px; font-weight: 600; }
-  .early-key .row img { width: 28px; height: 28px; image-rendering: pixelated; }
+  .early-key .row img { width: 28px; height: 28px; }
   .early-list { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .unlock { padding: 16px 14px; display: flex; flex-direction: column; gap: 8px; }
   .unlock .icons { display: flex; gap: 6px; min-height: 34px; align-items: center; }
-  .unlock .icons img { width: 32px; height: 32px; image-rendering: pixelated; background: rgba(255,255,255,.04); border-radius: 8px; padding: 3px; }
-  .unlock .icons img.note { width: 24px; height: 24px; padding: 5px; box-sizing: content-box; }
+  .unlock .icons img { width: 32px; height: 32px; background: rgba(255,255,255,.04); border-radius: 8px; padding: 3px; }
   .unlock b { font-size: 14px; }
   .unlock span { font-size: 12.5px; color: var(--muted); }
   .unlock .check { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; margin-top: auto; }
@@ -115,8 +114,7 @@
   .pill img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
   .arrow { color: var(--muted); font-size: 16px; }
   .via { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--muted); }
-  .via img { width: 20px; height: 20px; image-rendering: pixelated; }
-  .via img.note { width: 13px; height: 13px; }
+  .via img { width: 20px; height: 20px; }
   .rule p { margin: 0; font-size: 13px; color: var(--muted); }
 
   /* ---------- dungeon cards ---------- */
@@ -131,14 +129,13 @@
   .card h4 { margin: 0; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
   .reqs { display: flex; flex-wrap: wrap; gap: 6px; }
   .req { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px 4px 5px; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--line); font-size: 12.5px; font-weight: 600; }
-  .req img { width: 22px; height: 22px; image-rendering: pixelated; }
-  .req img.note { width: 14px; height: 14px; margin: 0 4px; }
-  .req img.shot { image-rendering: auto; border-radius: 5px; object-fit: cover; }
+  .req img { width: 22px; height: 22px; }
+  .req img.thumb { border-radius: 5px; object-fit: cover; }
   .req.opt { border-style: dashed; color: var(--muted); }
   .req .tag { margin-left: 2px; }
   .or-sep { align-self: center; font-size: 11px; font-weight: 700; color: var(--gold); }
   .gives { display: flex; align-items: center; gap: 8px; font-size: 13px; }
-  .gives img { width: 24px; height: 24px; image-rendering: pixelated; }
+  .gives img { width: 24px; height: 24px; }
   .foot { font-size: 12px; color: var(--muted); border-left: 2px solid var(--c); padding-left: 10px; margin-top: auto; }
   .foot p { margin: 0 0 4px; }
 
@@ -189,7 +186,7 @@
 <header>
   <svg class="triforce" viewBox="0 0 54 47"><g fill="#e6c068"><polygon points="27,0 40.5,23.5 13.5,23.5"/><polygon points="13.5,23.5 27,47 0,47"/><polygon points="40.5,23.5 54,47 27,47"/></g></svg>
   <h1>Adult Link Progression</h1>
-  <p>What each adult dungeon in Ocarina of Time needs, what it unlocks, and every glitchless order of the five temples. Requirements cover every chest in each dungeon, Gold Skulltulas excluded, except Gerudo Training Grounds, where the goal is only the Ice Arrows.</p>
+  <p>What each adult dungeon in Ocarina of Time needs, what it unlocks, and every glitchless order of the five temples. Requirements cover every chest in each dungeon, Gold Skulltulas excluded, except Gerudo Proving Grounds, where the goal is only the Ice Arrows.</p>
   <nav>
     <a href="#findings">At a glance</a>
     <a href="#early">Before the Forest Temple</a>
@@ -206,9 +203,9 @@
   <p class="lede">Everything Child Link can get before pulling the Master Sword is assumed to be in your inventory, including optional items like Din's Fire.</p>
   <div class="panel key-findings">
     <ul>
-      <li><img src="img/i-lens.png" alt=""> <b>The Lens of Truth is optional everywhere.</b> It shows invisible things in Shadow, Spirit, Training Grounds, Bottom of the Well and the Haunted Wasteland, and every one of them can be done from memory or with a guide. Doing Bottom of the Well before Shadow and Spirit makes them easier, but it is not required.</li>
-      <li><img src="img/i-icearrow.png" alt=""> <b>Training Grounds: the Ice Arrows take seven keys.</b> The seventh comes from either the Hammer or the Iron Boots. The Gerudo Card gets you in, and the Lens of Truth helps with the hidden chest and the fake wall.</li>
-      <li><img src="img/i-zora.png" alt=""> <b>Water needs the Zora Tunic</b> for the Central Pillar chest. <img src="img/n-storms.png" alt="" style="width:14px;height:14px"> <b>Fire needs Scarecrow's Song</b> for its Scarecrow chest.</li>
+      <li><img src="img/i-lens.webp" alt=""> <b>The Lenses of Truth are optional everywhere.</b> They show invisible things in Shadow, Spirit, Proving Grounds, Bottom of the Well and the Mirage Desert, and every one of them can be done from memory or with a guide. Doing Bottom of the Well before Shadow and Spirit makes them easier, but it is not required.</li>
+      <li><img src="img/i-icearrow.webp" alt=""> <b>Proving Grounds: the Ice Arrows take seven keys.</b> The seventh comes from either the Hammer or the Iron Boots. The Gerudo Pass gets you in, and the Lenses of Truth help with the hidden chest and the fake wall.</li>
+      <li><img src="img/i-zora.webp" alt=""> <b>Water needs the Zora Tunic</b> for the Central Pillar chest. <img src="img/n-song.svg" alt=""> <b>Fire needs Scarecrow Song</b> for its Scarecrow chest.</li>
       <li>The five temples have seven glitchless orders, listed under Possible orders.</li>
     </ul>
   </div>
@@ -220,34 +217,34 @@
   <p class="lede">With the Hookshot and Epona, all of this is open before you set foot in a temple.</p>
   <div class="early">
     <div class="panel early-key">
-      <img class="bg" src="img/epona.png" alt="">
+      <img class="bg" src="img/epona.webp" alt="">
       <div class="k">You need</div>
-      <div class="row"><img src="img/i-hookshot.png" alt="">Hookshot</div>
-      <div class="row"><img src="img/epona.png" alt="" style="object-fit:contain;image-rendering:auto">Epona</div>
+      <div class="row"><img src="img/i-hookshot.webp" alt="">Hookshot</div>
+      <div class="row"><img src="img/epona.webp" alt="" style="object-fit:contain;image-rendering:auto">Epona</div>
     </div>
     <div class="early-list">
       <div class="panel unlock">
-        <div class="icons"><img src="img/i-biggoron.png" alt=""></div>
+        <div class="icons"><img src="img/i-biggoron.webp" alt=""></div>
         <b>Biggoron Sword</b><span>Adult trading sequence</span>
         <div class="check">The chain passes the carpenters' tent beyond the broken bridge in Gerudo Valley, which Epona jumps.</div>
       </div>
       <div class="panel unlock">
-        <div class="icons"><img src="img/i-goron.png" alt=""><img class="note" src="img/n-bolero.png" alt=""></div>
+        <div class="icons"><img src="img/i-goron.webp" alt=""><img class="note" src="img/n-song.svg" alt=""></div>
         <b>Red Tunic + Bolero of Fire</b><span>Goron City and Death Mountain Crater</span>
         <div class="check">The Hookshot (or Hover Boots) reaches Sheik in the crater.</div>
       </div>
       <div class="panel unlock">
-        <div class="icons"><img src="img/i-ironboots.png" alt=""><img class="note" src="img/n-serenade.png" alt=""><img src="img/i-zora.png" alt=""></div>
-        <b>Iron Boots, Serenade of Water, Blue Tunic</b><span>Ice Cavern and Zora's Domain</span>
+        <div class="icons"><img src="img/i-ironboots.webp" alt=""><img class="note" src="img/n-song.svg" alt=""><img src="img/i-zora.webp" alt=""></div>
+        <b>Iron Boots, Serenade of Water, Blue Tunic</b><span>Ice Cavern and Zora Domain</span>
         <div class="check">Blue Fire from the Ice Cavern melts the red ice and thaws King Zora. The Blue Tunic can also be bought at the Zora Shop.</div>
       </div>
       <div class="panel unlock">
-        <div class="icons"><img src="img/i-gerudo.png" alt=""></div>
-        <b>Gerudo Membership Card</b><span>Gerudo Fortress stealth section</span>
+        <div class="icons"><img src="img/i-gerudo.webp" alt=""></div>
+        <b>Gerudo Pass</b><span>Gerudo Fortress stealth section</span>
         <div class="check">Free all four carpenters. The Longshot can replace Epona for the valley.</div>
       </div>
       <div class="panel unlock">
-        <div class="icons"><img src="img/i-scale.png" alt=""></div>
+        <div class="icons"><img src="img/i-scale.webp" alt=""></div>
         <b>Golden Scale</b><span>Fishing Pond</span>
         <div class="check">Adult fishing has no item requirement.</div>
       </div>
@@ -288,36 +285,36 @@
   <p class="lede">The first six set the order of the temples. The last two place the side dungeons.</p>
   <div class="rules">
     <div class="panel rule">
-      <div class="flow"><span class="pill" style="--c:var(--fire)"><img src="img/fire.png" alt="">Fire</span><span class="via">can be first</span></div>
+      <div class="flow"><span class="pill" style="--c:var(--fire)"><img src="img/fire.webp" alt="">Fire</span><span class="via">can be first</span></div>
       <p>The Bow only opens the 3F door to the Dungeon Map, and you can reach that room from the other side. The map chest needs either the Bow or the sixth key.</p>
     </div>
     <div class="panel rule">
-      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/forest.png" alt="">Forest</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-bow.png" alt="">Bow</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--water)"><img src="img/water.png" alt="">Water</span></div>
+      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/forest.webp" alt="">Forest</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-bow.webp" alt="">Bow</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--water)"><img src="img/water.webp" alt="">Water</span></div>
       <p>Water can come before Fire, but only after Forest. The River chest behind Dark Link can only be opened with the Bow.</p>
     </div>
     <div class="panel rule">
-      <div class="flow"><span class="pill" style="--c:var(--water)"><img src="img/water.png" alt="">Water</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-longshot.png" alt="">Longshot</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.png" alt="">Spirit</span></div>
-      <p>The Longshot crosses the River of Sand in the Haunted Wasteland. The Hover Boots also work, but Shadow comes after Water anyway.</p>
+      <div class="flow"><span class="pill" style="--c:var(--water)"><img src="img/water.webp" alt="">Water</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-longshot.webp" alt="">Longshot</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.webp" alt="">Spirit</span></div>
+      <p>The Longshot crosses the River of Sand in the Mirage Desert. The Hover Boots also work, but Shadow comes after Water anyway.</p>
     </div>
     <div class="panel rule">
-      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/forest.png" alt="">Forest</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-ocarina.png" alt="">past</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.png" alt="">Spirit</span></div>
+      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/forest.webp" alt="">Forest</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-ocarina.webp" alt="">past</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.webp" alt="">Spirit</span></div>
       <p>Spirit has a Child Link section. Sheik tells you that you can return the Master Sword to go back in time once the Forest Temple is cleared.</p>
     </div>
     <div class="panel rule">
-      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/m-forest.png" alt="">Forest</span><span class="pill" style="--c:var(--fire)"><img src="img/m-fire.png" alt="">Fire</span><span class="pill" style="--c:var(--water)"><img src="img/m-water.png" alt="">Water</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--shadow)"><img src="img/shadow.png" alt="">Shadow</span></div>
+      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/m-forest.webp" alt="">Forest</span><span class="pill" style="--c:var(--fire)"><img src="img/m-fire.webp" alt="">Fire</span><span class="pill" style="--c:var(--water)"><img src="img/m-water.webp" alt="">Water</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--shadow)"><img src="img/shadow.webp" alt="">Shadow</span></div>
       <p>The Kakariko cutscene with Sheik teaching the Nocturne of Shadow needs all three medallions.</p>
     </div>
     <div class="panel rule">
-      <div class="flow"><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.png" alt="">Spirit</span><span class="arrow">&harr;</span><span class="pill" style="--c:var(--shadow)"><img src="img/shadow.png" alt="">Shadow</span></div>
-      <p>Spirit can come before Shadow because it does not need the Hover Boots. The Longshot covers the Wasteland.</p>
+      <div class="flow"><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.webp" alt="">Spirit</span><span class="arrow">&harr;</span><span class="pill" style="--c:var(--shadow)"><img src="img/shadow.webp" alt="">Shadow</span></div>
+      <p>Spirit can come before Shadow because it does not need the Hover Boots. The Longshot covers the Mirage Desert.</p>
     </div>
     <div class="panel rule">
       <span><span class="tag part">Recommended</span></span>
-      <div class="flow"><span class="pill" style="--c:var(--well)"><img src="img/well.png" alt="">Well</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-lens.png" alt="">Lens</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--shadow)"><img src="img/shadow.png" alt="">Shadow</span><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.png" alt="">Spirit</span></div>
-      <p>Bottom of the Well before Shadow and Spirit gives you the Lens for their invisible walls, floors and chests. It is optional if you know where those are. The Well itself can only be done after Forest, as Child Link.</p>
+      <div class="flow"><span class="pill" style="--c:var(--well)"><img src="img/well.webp" alt="">Well</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-lens.webp" alt="">Lenses</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--shadow)"><img src="img/shadow.webp" alt="">Shadow</span><span class="pill" style="--c:var(--spirit)"><img src="img/spirit.webp" alt="">Spirit</span></div>
+      <p>Bottom of the Well before Shadow and Spirit gives you the Lenses of Truth for their invisible walls, floors and chests. They are optional if you know where those are. The Well itself can only be done after Forest, as Child Link.</p>
     </div>
     <div class="panel rule">
-      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/forest.png" alt="">Forest</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-bow.png" alt="">Bow</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--gtg)"><img src="img/gtg.png" alt="">Ice Arrows</span></div>
+      <div class="flow"><span class="pill" style="--c:var(--forest)"><img src="img/forest.webp" alt="">Forest</span><span class="arrow">&rarr;</span><span class="via"><img src="img/i-bow.webp" alt="">Bow</span><span class="arrow">&rarr;</span><span class="pill" style="--c:var(--gtg)"><img src="img/gtg.webp" alt="">Ice Arrows</span></div>
       <p>The Ice Arrows open right after Forest if you also have the Iron Boots from Ice Cavern, which is open from the start. Otherwise they wait for the Hammer from Fire.</p>
     </div>
   </div>
@@ -326,7 +323,7 @@
 <!-- ================= DUNGEONS ================= -->
 <section id="dungeons">
   <h2>Dungeon requirements</h2>
-  <p class="lede">Items needed for every chest except Gold Skulltulas, not counting the dungeon's own item. Training Grounds lists the minimum for the Ice Arrows. Everything Child Link can get before pulling the Master Sword is assumed and not listed.</p>
+  <p class="lede">Items needed for every chest except Gold Skulltulas, not counting the dungeon's own item. Proving Grounds lists the minimum for the Ice Arrows. Everything Child Link can get before pulling the Master Sword is assumed and not listed.</p>
   <div class="cards" id="cards"></div>
 </section>
 
@@ -336,9 +333,9 @@
   <p class="lede">The seven glitchless orders of the five temples.</p>
   <div class="orders" id="orderList"></div>
   <div class="panel side-fit">
-    <div style="--c:var(--ice)"><img src="img/ice.png" alt=""><span><b>Ice Cavern</b>Before Water, for the Iron Boots and the Zora Tunic.</span></div>
-    <div style="--c:var(--well)"><img src="img/well.png" alt=""><span><b>Bottom of the Well</b>Any time after Forest. Doing it before Shadow and Spirit gives you the Lens for them, which is optional but makes them easier.</span></div>
-    <div style="--c:var(--gtg)"><img src="img/gtg.png" alt=""><span><b>Gerudo Training Grounds</b>Ice Arrows any time after Forest, once you have the Iron Boots or the Hammer.</span></div>
+    <div style="--c:var(--ice)"><img src="img/ice.webp" alt=""><span><b>Ice Cavern</b>Before Water, for the Iron Boots and the Zora Tunic.</span></div>
+    <div style="--c:var(--well)"><img src="img/well.webp" alt=""><span><b>Bottom of the Well</b>Any time after Forest. Doing it before Shadow and Spirit gives you the Lenses of Truth for them. They are optional but make both temples easier.</span></div>
+    <div style="--c:var(--gtg)"><img src="img/gtg.webp" alt=""><span><b>Gerudo Proving Grounds</b>Ice Arrows any time after Forest, once you have the Iron Boots or the Hammer.</span></div>
   </div>
   <div class="panel heat">
     <div>
@@ -354,36 +351,36 @@
   <a href="https://wiki.ootrandomizer.com/index.php/Vanilla_Dungeon_Requirements">OoT Randomizer wiki, Vanilla Dungeon Requirements</a> ·
   <a href="https://github.com/OoTRandomizer/OoT-Randomizer/tree/Dev/data/World">OoT Randomizer logic files (data/World, Dev branch)</a> ·
   <a href="https://github.com/OoTRandomizer/OoT-Randomizer/blob/Dev/SettingsListTricks.py">OoT Randomizer glitchless trick list</a> ·
-  <a href="https://zeldawiki.wiki/wiki/Gerudo_Training_Ground">Zelda Wiki: Gerudo Training Ground</a>,
+  <a href="https://zeldawiki.wiki/wiki/Gerudo_Training_Ground">Zelda Wiki: Gerudo Proving Grounds</a>,
   <a href="https://zeldawiki.wiki/wiki/Requiem_of_Spirit">Requiem of Spirit</a>,
   <a href="https://zeldawiki.wiki/wiki/Nocturne_of_Shadow">Nocturne of Shadow</a>,
-  <a href="https://zeldawiki.wiki/wiki/Haunted_Wasteland">Haunted Wasteland</a>,
+  <a href="https://zeldawiki.wiki/wiki/Haunted_Wasteland">Mirage Desert</a>,
   <a href="https://zeldawiki.wiki/wiki/Din%27s_Fire">Din's Fire</a>,
   <a href="https://zeldawiki.wiki/wiki/Lens_of_Truth">Lens of Truth</a>,
   <a href="https://zeldawiki.wiki/wiki/Zora_Tunic">Zora Tunic</a>,
   <a href="https://zeldawiki.wiki/wiki/Master_Sword">Master Sword</a>,
-  <a href="https://zeldawiki.wiki/wiki/Gerudo%27s_Membership_Card">Gerudo's Membership Card</a>,
+  <a href="https://zeldawiki.wiki/wiki/Gerudo%27s_Membership_Card">Gerudo Pass</a>,
   <a href="https://zeldawiki.wiki/wiki/Song_of_Storms">Song of Storms</a>.</p>
-  <p>Screenshots and icons from <a href="https://zeldawiki.wiki">Zelda Wiki</a>.</p>
+  <p>Screenshots and icons from the Nintendo Switch 2 remake, via <a href="https://zeldawiki.wiki">Zelda Wiki</a>.</p>
 </footer>
 
 </div>
 
 <script>
 const D = {
-  forest:   { name: 'Forest Temple',           short: 'Forest',     img: 'forest.png',   c: 'var(--forest)',   hex: '#5fb15a', gives: ['i-bow.png', 'Fairy Bow'] },
-  fire:     { name: 'Fire Temple',             short: 'Fire',       img: 'fire.png',     c: 'var(--fire)',     hex: '#e5583c', gives: ['i-hammer.png', 'Megaton Hammer'] },
-  water:    { name: 'Water Temple',            short: 'Water',      img: 'water.png',    c: 'var(--water)',    hex: '#3f93e6', gives: ['i-longshot.png', 'Longshot'] },
-  shadow:   { name: 'Shadow Temple',           short: 'Shadow',     img: 'shadow.png',   c: 'var(--shadow)',   hex: '#a37ae0', gives: ['i-hoverboots.png', 'Hover Boots'] },
-  spirit:   { name: 'Spirit Temple',           short: 'Spirit',     img: 'spirit.png',   c: 'var(--spirit)',   hex: '#ea9c3c', gives: ['i-mirror.png', 'Mirror Shield'] },
-  ice:      { name: 'Ice Cavern',              short: 'Ice Cavern', img: 'ice.png',      c: 'var(--ice)',      hex: '#82dcee', gives: ['i-ironboots.png', 'Iron Boots'] },
-  well:     { name: 'Bottom of the Well',      short: 'Well',       img: 'well.png',     c: 'var(--well)',     hex: '#a495bf', gives: ['i-lens.png', 'Lens of Truth'] },
-  fortress: { name: 'Gerudo Fortress',         short: 'Fortress',   img: 'fortress.png', c: 'var(--fortress)', hex: '#d9b65c', gives: ['i-gerudo.png', 'Gerudo Card'] },
-  gtg:      { name: 'Gerudo Training Grounds', short: 'Training Grounds', img: 'gtg.png', c: 'var(--gtg)',    hex: '#c79a2c', gives: ['i-icearrow.png', 'Ice Arrows'] },
+  forest:   { name: 'Forest Temple',           short: 'Forest',     img: 'forest.webp',   c: 'var(--forest)',   hex: '#5fb15a', gives: ['i-bow.webp', 'Fairy Bow'] },
+  fire:     { name: 'Fire Temple',             short: 'Fire',       img: 'fire.webp',     c: 'var(--fire)',     hex: '#e5583c', gives: ['i-hammer.webp', 'Megaton Hammer'] },
+  water:    { name: 'Water Temple',            short: 'Water',      img: 'water.webp',    c: 'var(--water)',    hex: '#3f93e6', gives: ['i-longshot.webp', 'Longshot'] },
+  shadow:   { name: 'Shadow Temple',           short: 'Shadow',     img: 'shadow.webp',   c: 'var(--shadow)',   hex: '#a37ae0', gives: ['i-hoverboots.webp', 'Hover Boots'] },
+  spirit:   { name: 'Spirit Temple',           short: 'Spirit',     img: 'spirit.webp',   c: 'var(--spirit)',   hex: '#ea9c3c', gives: ['i-mirror.webp', 'Mirror Shield'] },
+  ice:      { name: 'Ice Cavern',              short: 'Ice Cavern', img: 'ice.webp',      c: 'var(--ice)',      hex: '#82dcee', gives: ['i-ironboots.webp', 'Iron Boots'] },
+  well:     { name: 'Bottom of the Well',      short: 'Well',       img: 'well.webp',     c: 'var(--well)',     hex: '#a495bf', gives: ['i-lens.webp', 'Lenses of Truth'] },
+  fortress: { name: 'Gerudo Fortress',         short: 'Fortress',   img: 'fortress.webp', c: 'var(--fortress)', hex: '#d9b65c', gives: ['i-gerudo.webp', 'Gerudo Pass'] },
+  gtg:      { name: 'Gerudo Proving Grounds', short: 'Proving Grounds', img: 'gtg.webp', c: 'var(--gtg)',    hex: '#c79a2c', gives: ['i-icearrow.webp', 'Ice Arrows'] },
 };
 const ITEM = {
   'i-bow': 'Fairy Bow', 'i-ironboots': 'Iron Boots', 'i-zora': 'Zora Tunic', 'i-ocarina': 'Return to the past',
-  'n-storms': 'Song of Storms', 'i-lens': 'Lens of Truth', 'i-longshot': 'Longshot', 'i-gerudo': 'Gerudo Card',
+  'n-storms': 'Song of Storms', 'i-lens': 'Lenses of Truth', 'i-longshot': 'Longshot', 'i-gerudo': 'Gerudo Pass',
   'n-nocturne': 'Nocturne of Shadow', 'i-dins': "Din's Fire", 'i-hammer': 'Megaton Hammer', 'i-gauntlets': 'Silver Gauntlets',
 };
 
@@ -405,11 +402,11 @@ const GRAPH = (function () {
   const ports = {
     well:   [{ from: 'forest', icons: ['i-ocarina'] }, { ext: true, icons: ['n-storms'], tip: 'Song of Storms, learned as adult in the Kakariko windmill' }],
     water:  [{ from: 'forest', icons: ['i-bow'] }, { from: 'ice', icons: ['i-ironboots', 'i-zora'] }],
-    spirit: [{ from: 'well', icons: ['i-lens'], opt: true, tip: 'Lens of Truth: shows the Phantom Guide in the Wasteland and two invisible chests. Not needed if you know the path and where the chests are.' },
+    spirit: [{ from: 'well', icons: ['i-lens'], opt: true, tip: 'Lenses of Truth: show the Phantom Guide in the Mirage Desert and two invisible chests. Not needed if you know the path and where the chests are.' },
              { from: 'water', icons: ['i-longshot'] }, { from: 'fortress', icons: ['i-gerudo'] }],
-    shadow: [{ from: 'well', icons: ['i-lens'], opt: true, tip: "Lens of Truth: shows invisible walls, floors, the moving platform and Bongo Bongo's body. Not needed if you know where they are." },
+    shadow: [{ from: 'well', icons: ['i-lens'], opt: true, tip: "Lenses of Truth: show invisible walls, floors, the moving platform and Bongo Bongo's body. Not needed if you know where they are." },
              { from: 'gate', icons: ['n-nocturne'] }],
-    gtg:    [{ from: 'well', icons: ['i-lens'], stub: true, opt: true, tip: 'Lens of Truth: shows the hidden ceiling chest and the fake wall. Not needed if you know where they are.' },
+    gtg:    [{ from: 'well', icons: ['i-lens'], stub: true, opt: true, tip: 'Lenses of Truth: show the hidden ceiling chest and the fake wall. Not needed if you know where they are.' },
              { from: 'forest', icons: ['i-bow'], stub: true },
              { from: ['fire', 'ice'], icons: ['i-hammer', 'OR', 'i-ironboots'], stub: true, or: true, tip: 'Megaton Hammer (Fire Temple) or Iron Boots (Ice Cavern): either one gets you the 7th key' },
              { from: 'fortress', icons: ['i-gerudo'] }],
@@ -468,8 +465,7 @@ const GRAPH = (function () {
         if (ic === 'OR') {
           el('text', { x: ix + 9, y: py + 4, 'text-anchor': 'middle', style: 'font-size:10px;font-weight:700;fill:#e6c068' }, g).textContent = 'or';
         } else {
-          const s = ic.startsWith('n-') ? 13 : 20;
-          el('image', { href: `img/${ic}.png`, x: ix + (20 - s) / 2, y: py - s / 2, width: s, height: s, style: 'image-rendering:pixelated' }, g);
+          el('image', { href: ic.startsWith('n-') ? 'img/n-song.svg' : `img/${ic}.webp`, x: ix, y: py - 10, width: 20, height: 20 }, g);
         }
         ix += wOf(ic);
       });
@@ -500,6 +496,7 @@ const GRAPH = (function () {
 
   // ---- nodes
   const nodeEls = {};
+  const giveLabels = []; // reward name labels, fitted after drawing
   let clipN = 0;
   Object.keys(pos).forEach(id => {
     const [cx, cy] = pos[id];
@@ -508,7 +505,7 @@ const GRAPH = (function () {
     if (id === 'gate') {
       el('polygon', { points: `${cx},${cy - G} ${cx + G},${cy} ${cx},${cy + G} ${cx - G},${cy}`, fill: '#2a2414', stroke: '#e6c068', 'stroke-width': 2 }, g);
       el('text', { x: cx, y: cy + 5, 'text-anchor': 'middle', class: 'title', style: 'font-size:12px;fill:#e6c068' }, g).textContent = 'AND';
-      ['m-forest', 'm-fire', 'm-water'].forEach((m, k) => el('image', { href: `img/${m}.png`, x: cx - 35 + k * 24, y: cy + G + 8, width: 22, height: 22 }, g));
+      ['m-forest', 'm-fire', 'm-water'].forEach((m, k) => el('image', { href: `img/${m}.webp`, x: cx - 35 + k * 24, y: cy + G + 8, width: 22, height: 22 }, g));
       el('text', { x: cx, y: cy + G + 48, 'text-anchor': 'middle', class: 'note' }, g).textContent = 'All three medallions';
       el('text', { x: cx, y: cy + G + 62, 'text-anchor': 'middle', class: 'note' }, g).textContent = 'Kakariko cutscene';
       return;
@@ -516,9 +513,9 @@ const GRAPH = (function () {
     if (id === 'start') {
       el('rect', { x: cx - 75, y: cy - 60, width: 150, height: 120, rx: 14, fill: '#2a2414', stroke: '#e6c068', 'stroke-width': 2 }, g);
       el('text', { x: cx, y: cy - 32, 'text-anchor': 'middle', class: 'title', style: 'fill:#e6c068' }, g).textContent = 'Adult Link';
-      el('image', { href: 'img/i-hookshot.png', x: cx - 50, y: cy - 18, width: 24, height: 24, style: 'image-rendering:pixelated' }, g);
+      el('image', { href: 'img/i-hookshot.webp', x: cx - 50, y: cy - 18, width: 24, height: 24 }, g);
       el('text', { x: cx - 20, y: cy - 1, class: 'sub' }, g).textContent = 'Hookshot';
-      el('image', { href: 'img/epona.png', x: cx - 50, y: cy + 10, width: 24, height: 24 }, g);
+      el('image', { href: 'img/epona.webp', x: cx - 50, y: cy + 10, width: 24, height: 24 }, g);
       el('text', { x: cx - 20, y: cy + 27, class: 'sub' }, g).textContent = 'Epona';
       el('text', { x: cx, y: cy + 50, 'text-anchor': 'middle', class: 'note' }, g).textContent = '+ Goron Tunic';
       return;
@@ -531,11 +528,31 @@ const GRAPH = (function () {
     el('image', { href: 'img/' + d.img, x: x + 8, y: cy - 30, width: 60, height: 60, preserveAspectRatio: 'xMidYMid slice', 'clip-path': `url(#${cid})` }, g);
     const title = el('text', { x: x + 78, y: cy - 6, class: 'title' }, g);
     title.textContent = d.short;
-    if (id === 'gtg') { title.textContent = 'Training'; el('text', { x: x + 78, y: cy + 11, class: 'title' }, g).textContent = 'Grounds'; }
+    if (id === 'gtg') { title.textContent = 'Proving'; el('text', { x: x + 78, y: cy + 11, class: 'title' }, g).textContent = 'Grounds'; }
     const gy = id === 'gtg' ? cy + 20 : cy + 4;
-    el('image', { href: 'img/' + d.gives[0], x: x + 78, y: gy, width: 20, height: 20, style: 'image-rendering:pixelated' }, g);
-    el('text', { x: x + 102, y: gy + 15, class: 'sub' }, g).textContent = d.gives[1];
+    el('image', { href: 'img/' + d.gives[0], x: x + 78, y: gy, width: 20, height: 20 }, g);
+    giveLabels.push({ t: el('text', { x: x + 102, y: gy + 15, class: 'sub' }, g), label: d.gives[1], avail: W - 110, baseY: gy + 15 });
   });
+
+  // Reward names that don't fit beside the icon wrap onto two lines. Measured again once the web font
+  // has loaded, because the fallback font has different widths.
+  const fitLabel = ({ t, label, avail, baseY }) => {
+    t.textContent = label;
+    t.setAttribute('y', baseY);
+    const words = label.split(' ');
+    if (words.length < 2 || t.getComputedTextLength() <= avail) return;
+    let cut = 1, bestDiff = Infinity;
+    for (let i = 1; i < words.length; i++) {
+      const diff = Math.abs(words.slice(0, i).join(' ').length - words.slice(i).join(' ').length);
+      if (diff < bestDiff) { bestDiff = diff; cut = i; }
+    }
+    t.textContent = '';
+    [words.slice(0, cut).join(' '), words.slice(cut).join(' ')].forEach((line, k) => {
+      el('tspan', { x: t.getAttribute('x'), y: baseY - 6 + k * 13 }, t).textContent = line;
+    });
+  };
+  giveLabels.forEach(fitLabel);
+  if (document.fonts) document.fonts.ready.then(() => giveLabels.forEach(fitLabel));
 
   // ---- focus
   const upstream = id => {
@@ -603,36 +620,36 @@ function INFO(id) {
   const R = (icon, label, cls = '', tag = '') => ({ icon, label, cls, tag });
   const OR = { or: true };
   const cards = [
-    { id: 'forest', kind: 'Temple', reqs: [R('i-hookshot.png', 'Hookshot')],
+    { id: 'forest', kind: 'Temple', reqs: [R('i-hookshot.webp', 'Hookshot')],
       foot: ['The Hookshot is for getting in. Song of Time opens the northwest courtyard.'] },
-    { id: 'fire', kind: 'Temple', reqs: [R('i-hookshot.png', 'Hookshot'), R('i-goron.png', 'Goron Tunic'), R('n-storms.png', "Scarecrow's Song"), R('i-bow.png', 'Fairy Bow', 'opt', 'opt')],
-      foot: ['The Bow only hits an eye that opens a door to the Dungeon Map on 3F. You can reach that room from the other side over the bars.', "The Scarecrow chest above the boulder maze needs Scarecrow's Song. Play any 8-note tune to Bonooru at Lake Hylia as a child, then play the same tune to him again as adult."] },
+    { id: 'fire', kind: 'Temple', reqs: [R('i-hookshot.webp', 'Hookshot'), R('i-goron.webp', 'Goron Tunic'), R('n-song.svg', "Scarecrow Song"), R('i-bow.webp', 'Fairy Bow', 'opt', 'opt')],
+      foot: ['The Bow only hits an eye that opens a door to the Dungeon Map on 3F. You can reach that room from the other side over the bars.', "The Scarecrow chest above the boulder maze needs Scarecrow Song. Play any 8-note tune to Bonooru at Lake Hylia as a child, then play the same tune to him again as adult."] },
     { id: 'ice', kind: 'Mini-dungeon', reqs: [R(null, 'Nothing extra')],
-      foot: ['Blue Fire from the map room melts the red ice in front of the Iron Boots, so bring an empty Bottle. Carry more out to thaw King Zora for the Zora Tunic.'] },
-    { id: 'water', kind: 'Temple', reqs: [R('i-hookshot.png', 'Hookshot'), R('i-bow.png', 'Fairy Bow'), R('i-ironboots.png', 'Iron Boots'), R('i-zora.png', 'Zora Tunic')],
+      foot: ['Blue Fire from the map room melts the red ice in front of the Iron Boots, so bring an Empty Bottle. Carry more out to thaw King Zora for the Zora Tunic.'] },
+    { id: 'water', kind: 'Temple', reqs: [R('i-hookshot.webp', 'Hookshot'), R('i-bow.webp', 'Fairy Bow'), R('i-ironboots.webp', 'Iron Boots'), R('i-zora.webp', 'Zora Tunic')],
       foot: ['The Central Pillar chest needs the Zora Tunic. The River chest past Dark Link needs the Bow.'] },
-    { id: 'well', kind: 'Mini-dungeon', reqs: [R('n-storms.png', 'Song of Storms'), R('forest.png', 'Forest done (return to the past)', 'shot')],
+    { id: 'well', kind: 'Mini-dungeon', reqs: [R('n-song.svg', 'Song of Storms'), R('forest.webp', 'Forest done (return to the past)')],
       foot: ['Learn Song of Storms as adult in the windmill, then play it there as Child Link to drain the well. The whole dungeon is done as a child.'] },
-    { id: 'shadow', kind: 'Temple', reqs: [R('n-nocturne.png', 'Nocturne of Shadow'), R('i-lens.png', 'Lens of Truth', 'opt', 'opt'), R('i-hookshot.png', 'Hookshot'), R('i-bow.png', 'Fairy Bow')],
-      foot: ['Nocturne comes from the Kakariko cutscene after Forest, Fire and Water.', "The Bow drops the pillar that bridges the way to the boss (the Longshot with Scarecrow's Song also works).", "The Lens shows the fake walls, the invisible floors, the invisible moving platform in the huge pit room and Bongo Bongo's body. Without it you go from memory, and in the boss fight the hands show where the eye is."] },
-    { id: 'fortress', kind: 'Area', reqs: [R('epona.png', 'Epona', 'contain'), OR, R('i-longshot.png', 'Longshot'), R('i-hookshot.png', 'Hookshot', 'opt', 'opt')],
+    { id: 'shadow', kind: 'Temple', reqs: [R('n-song.svg', 'Nocturne of Shadow'), R('i-lens.webp', 'Lenses of Truth', 'opt', 'opt'), R('i-hookshot.webp', 'Hookshot'), R('i-bow.webp', 'Fairy Bow')],
+      foot: ['Nocturne comes from the Kakariko cutscene after Forest, Fire and Water.', "The Bow drops the pillar that bridges the way to the boss (the Longshot with Scarecrow Song also works).", "The Lenses show the fake walls, the invisible floors, the invisible moving platform in the huge pit room and Bongo Bongo's body. Without them you go from memory, and in the boss fight the hands show where the eye is."] },
+    { id: 'fortress', kind: 'Area', reqs: [R('epona.webp', 'Epona', 'contain'), OR, R('i-longshot.webp', 'Longshot'), R('i-hookshot.webp', 'Hookshot', 'opt', 'opt')],
       foot: ['Either one crosses the broken bridge in Gerudo Valley.', 'The Hookshot stuns guards. It helps most with the guard who walks a corridor that is hard to avoid otherwise.'] },
     { id: 'gtg', kind: 'Mini-dungeon',
-      reqs: [R('i-gerudo.png', 'Gerudo Card'), R('i-hookshot.png', 'Hookshot'), R('i-bow.png', 'Fairy Bow'), R('i-hammer.png', 'Hammer'), OR, R('i-ironboots.png', 'Iron Boots'),
-             R('i-lens.png', 'Lens of Truth', 'opt', 'opt')],
+      reqs: [R('i-gerudo.webp', 'Gerudo Pass'), R('i-hookshot.webp', 'Hookshot'), R('i-bow.webp', 'Fairy Bow'), R('i-hammer.webp', 'Hammer'), OR, R('i-ironboots.webp', 'Iron Boots'),
+             R('i-lens.webp', 'Lenses of Truth', 'opt', 'opt')],
       foot: ['There are 9 keys, and 7 locked doors stand between you and the Ice Arrows. Six keys need no extra item: the Stalfos and Beamos chests in the lobby, the freestanding key on the right side of the maze (through the lava room with Song of Time), the hidden ceiling chest inside the maze, and the two eye-statue chests, which need the Bow.',
              'The seventh key is the Hammer switch chest or the underwater chest. The underwater chest needs the Iron Boots and Song of Time, and the Zora Tunic is recommended there.',
-             'The hidden ceiling chest is invisible and the way to the eye statue runs through a fake wall. The Lens shows both. Without it you have to know where they are.',
+             'The hidden ceiling chest is invisible and the way to the eye statue runs through a fake wall. The Lenses show both. Without them you have to know where they are.',
              'Not needed for the Ice Arrows: the Silver Gauntlets, the Hover Boots and the Longshot.'] },
-    { id: 'spirit', kind: 'Temple', reqs: [R('i-longshot.png', 'Longshot'), R('i-gerudo.png', 'Gerudo Card'), R('n-requiem.png', 'Requiem of Spirit'), R('i-bow.png', 'Fairy Bow'), R('i-lens.png', 'Lens of Truth', 'opt', 'opt'), R('i-hammer.png', 'Hammer', 'opt', 'opt')],
-      foot: ['Sheik teaches the Requiem the first time adult Link reaches the Colossus, so you cross the Wasteland once. The Longshot (or Hover Boots) crosses the River of Sand. After the flags, the Lens shows the Phantom Guide, or you follow a memorized path.', 'Inside, two chests are invisible without the Lens, and the Bow is needed for the Boss Key chest. The Hammer switch on 3F only opens a shortcut.'] },
+    { id: 'spirit', kind: 'Temple', reqs: [R('i-longshot.webp', 'Longshot'), R('i-gerudo.webp', 'Gerudo Pass'), R('n-song.svg', 'Requiem of Spirit'), R('i-bow.webp', 'Fairy Bow'), R('i-lens.webp', 'Lenses of Truth', 'opt', 'opt'), R('i-hammer.webp', 'Hammer', 'opt', 'opt')],
+      foot: ['Sheik teaches the Requiem the first time adult Link reaches the Evil Desert Colossus, so you cross the Mirage Desert once. The Longshot (or Hover Boots) crosses the River of Sand. After the flags, the Lenses show the Phantom Guide, or you follow a memorized path.', 'Inside, two chests are invisible without the Lenses, and the Bow is needed for the Boss Key chest. The Hammer switch on 3F only opens a shortcut.'] },
   ];
   const chip = r => {
     if (r.or) return '<span class="or-sep">OR</span>';
     let img = '';
     if (r.icon) {
       const isNote = r.icon.startsWith('n-'), isItem = r.icon.startsWith('i-');
-      const cls = isNote ? 'note' : isItem ? '' : 'shot';
+      const cls = isNote ? 'note' : isItem ? '' : 'thumb';
       const fit = r.cls.includes('contain') ? ' style="object-fit:contain"' : '';
       img = `<img src="img/${r.icon}" alt="" class="${cls}"${fit}>`;
     }
